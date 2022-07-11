@@ -1,16 +1,29 @@
 import React, { useState } from "react";
+import "./from.css";
 class NameForm extends React.Component {
-  sends = (event) => {
-    const user = this.state.user;
+  sends = (event) => {};
+  /*
+  axios = {
+    method: "post",
+    url: "/users",
+    data: {
+      name: this.state.user,
+      password: this.state.password,
+    },
   };
+  */
   render() {
     return (
-      <form method="POST">
+      <form>
         <label>
           USER:
-          <input type="text" name="User" />
+          <input type={"text"} name="user" />
         </label>
-        <button onClick={this.sends}>Submit</button>
+        <label>
+          Password:
+          <input type={"password"} name="password" />
+        </label>
+        <button>Submit</button>
       </form>
     );
   }
