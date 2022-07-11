@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./from.css";
+import "./LoginFrom.css";
 class NameForm extends React.Component {
   sends = (event) => {};
   /*
@@ -14,17 +14,15 @@ class NameForm extends React.Component {
   */
   render() {
     return (
-      <form>
-        <label>
-          USER:
-          <input type={"text"} name="user" />
-        </label>
-        <label>
-          Password:
-          <input type={"password"} name="password" />
-        </label>
-        <button>Submit</button>
-      </form>
+      <div id="fromlog">
+        <form>
+          <label>
+            USER:
+            <input type={"text"} name="user" />
+          </label>
+          <button>Submit</button>
+        </form>
+      </div>
     );
   }
 }

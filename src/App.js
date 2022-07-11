@@ -1,5 +1,5 @@
 import "./App.css";
-import NameForm from "./container/from";
+import NameForm from "./container/LoginFrom";
 
 function App() {
   return <NameForm />;
