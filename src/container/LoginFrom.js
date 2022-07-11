@@ -24,12 +24,14 @@ const NameForm = () => {
           type={"text"}
           name="user"
           value={name}
+          placeholder="name/login"
           onChange={(e) => setName(e.target.value)}
         />
         <input
           type={"text"}
           name="url"
           value={adres}
+          placeholder="url"
           onChange={(e) => setUrl(e.target.value)}
         />
       </div>
