@@ -1,7 +1,8 @@
 #fromlog {
-  background-color: blueviolet;
+  background-color: black;
   text-align: center;
   display: block;
   margin: 10px;
   padding: 10px;
+  color: yellow;
 }
