@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./LoginFrom.css";
-const url = "http://192.168.2.81:8080/Users";
+const url = "http://localhost:8080/users";
 const NameForm = () => {
   const [name, setName] = useState("");
   const [adres, setUrl] = useState("");
