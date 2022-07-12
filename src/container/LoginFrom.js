@@ -19,6 +19,7 @@ const NameForm = () => {
       })
       .then(function (response) {
         console.log(response);
+        navigate("/home");
       })
       .catch(function (error) {
         console.log(error);
@@ -51,14 +52,7 @@ const NameForm = () => {
         />
       </div>
       <div id="button">
-        <button
-          onClick={handleSumibt}
-          onChange={() => {
-            navigate("/chat");
-          }}
-        >
-          Submit
-        </button>
+        <button onClick={handleSumibt}>Submit</button>
       </div>
     </div>
   );
