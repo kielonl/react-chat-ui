@@ -1,20 +1,35 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./LoginFrom.css";
+import WebChat from "./Chat";
+import { useNavigate, Link } from "react-router-dom";
 const url = "http://localhost:8080/users";
 const NameForm = () => {
-  const [name, setName] = useState("");
-  const [adres, setUrl] = useState("");
+  const [username, setName] = useState("");
+  const [imageUrl, setUrl] = useState("");
+  const navigate = useNavigate();
 
   const handleSumibt = async (e) => {
     e.preventDefault();
-    try {
-      const resp = await axios.post(url, { name: name, adres: adres });
-      console.log(resp.data);
-    } catch (error) {
-      console.log(error.response);
-    }
+    console.log(username, imageUrl);
+    axios
+      .post(url, {
+        username: username,
+        imageUrl: imageUrl,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    axios.get(`http://localhost:8080/users`).then((res) => {
+      const persons = res.data;
+      this.setState({ persons });
+    });
   };
+
   return (
     <div id="fromlog">
       <div id="upertext">Super app chat</div>
@@ -23,20 +38,27 @@ const NameForm = () => {
         <input
           type={"text"}
           name="user"
-          value={name}
+          value={username}
           placeholder="name/login"
           onChange={(e) => setName(e.target.value)}
         />
         <input
           type={"text"}
           name="url"
-          value={adres}
+          value={imageUrl}
           placeholder="url"
           onChange={(e) => setUrl(e.target.value)}
         />
       </div>
       <div id="button">
-        <button onClick={handleSumibt}>Submit</button>
+        <button
+          onClick={handleSumibt}
+          onChange={() => {
+            navigate("/chat");
+          }}
+        >
+          Submit
+        </button>
       </div>
     </div>
   );
