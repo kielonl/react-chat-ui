@@ -84,3 +84,7 @@ th {
 .home {
   color: yellow;
 }
+img {
+  max-height: 150px;
+  max-width: 150px;
+}

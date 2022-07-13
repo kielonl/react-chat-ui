@@ -35,7 +35,9 @@ const Home = () => {
           <th>Url to image</th>
         </td>
         <tr>
-          <td>{data.image}</td>
+          <td className="zdj">
+            <img src={data.image}></img>
+          </td>
         </tr>
       </tr>
     );
