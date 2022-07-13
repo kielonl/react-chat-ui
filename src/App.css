@@ -1,0 +1,26 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: rgb(88, 88, 94);
+  color: white;
+}
+.navlinks {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+.homepage {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  background-color: aqua;
+}
+.abouttext {
+  color: white;
+}
