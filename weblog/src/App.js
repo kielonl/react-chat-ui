@@ -1,5 +1,4 @@
 import "./App.css";
-import "./container/LoginFrom.css";
 import NameForm from "./container/LoginFrom";
 import About from "./container/About";
 import Home from "./container/Homepage";

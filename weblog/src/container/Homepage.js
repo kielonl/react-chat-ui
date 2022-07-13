@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./LoginFrom.css";
+import "./Homepage.css";
 const axios = require("axios");
 const Home = () => {
   const [data, setDate] = useState([]);
-  //get wyświetla dane użytkowników w divach
   const url = "http://localhost:8080/users";
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const Home = () => {
           <th>Browser</th>
         </td>
         <tr>
-          <td>{data.browser.name}</td>
+          <td>{data.browser.browserName}</td>
         </tr>
         <td>
           <th>Url to image</th>
@@ -47,7 +46,7 @@ const Home = () => {
     <div className="homepage">
       <h1 className="home">Home page</h1>
       <div>
-        <table>{arr}</table>
+        <table id="table1">{arr}</table>
       </div>
     </div>
   );
