@@ -62,7 +62,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: yellow;
   float: left;
 }
 .abouttext {
@@ -74,5 +73,14 @@ button:hover {
   color: yellow;
 }
 #users {
-  border: 5px solid yellow;
+  border: 5px solid rgb(37, 37, 34);
+}
+table {
+  background-color: #c0c0c0;
+}
+th {
+  background-color: #c0c0c0;
+}
+.home {
+  color: yellow;
 }

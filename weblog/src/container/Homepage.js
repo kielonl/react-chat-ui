@@ -19,15 +19,31 @@ const Home = () => {
   const arr = data.map((data, index) => {
     return (
       <tr>
-        <td>{data.username}</td>
-        <td>{data.dataTime}</td>
+        <td>
+          <th>username</th>
+        </td>
+        <tr>
+          <td>{data.username}</td>
+        </tr>
+        <td>
+          <th>Browser</th>
+        </td>
+        <tr>
+          <td>{data.browser.name}</td>
+        </tr>
+        <td>
+          <th>Url to image</th>
+        </td>
+        <tr>
+          <td>{data.image}</td>
+        </tr>
       </tr>
     );
   });
 
   return (
     <div className="homepage">
-      <h1>Home page</h1>
+      <h1 className="home">Home page</h1>
       <div>
         <table>{arr}</table>
       </div>

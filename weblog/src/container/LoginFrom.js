@@ -24,11 +24,6 @@ const NameForm = () => {
       .catch(function (error) {
         console.log(error);
       });
-
-    axios.get(`http://localhost:8080/users`).then((res) => {
-      const persons = res.data;
-      this.setState({ persons });
-    });
   };
 
   return (
