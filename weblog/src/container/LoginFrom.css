@@ -50,3 +50,25 @@ button {
 button:hover {
   background: #2ecc71;
 }
+.abouttext {
+  text-align: center;
+  justify-content: center;
+  display: block;
+  color: white;
+}
+.homepage {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: yellow;
+}
+.abouttext {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: yellow;
+}
