@@ -1,0 +1,22 @@
+.liusername {
+  float: left;
+}
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.channelname {
+  background-color: #595656;
+}
+#listusers {
+  color: yellow;
+  width: 50%;
+  display: inline-block;
+  border: 3px solid yellowgreen;
+}
+#listchannels {
+  color: yellow;
+  width: 50%;
+  display: inline-block;
+  border: 3px solid yellow;
+}

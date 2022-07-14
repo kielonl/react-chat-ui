@@ -19,16 +19,11 @@ const NameForm = () => {
       })
       .then(function (response) {
         console.log(response);
-        navigate("/home");
+        navigate("/Chat");
       })
       .catch(function (error) {
         console.log(error);
       });
-
-    axios.get(`http://localhost:8080/users`).then((res) => {
-      const persons = res.data;
-      this.setState({ persons });
-    });
   };
 
   return (
