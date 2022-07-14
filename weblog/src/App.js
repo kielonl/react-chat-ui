@@ -1,5 +1,4 @@
 import "./App.css";
-import "./container/LoginFrom.css";
 import NameForm from "./container/LoginFrom";
 import About from "./container/About";
 import Home from "./container/Homepage";
@@ -12,6 +11,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<NameForm />} />
+        <Route path="/chat" element={<WebChat />} />
       </Routes>
     </Router>
   );
