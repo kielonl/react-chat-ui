@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./LoginFrom.css";
-import WebChat from "./Chat";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const url = "http://localhost:8080/users";
 const NameForm = () => {
   const [username, setName] = useState("");

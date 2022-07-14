@@ -35,7 +35,7 @@ const Home = () => {
         </td>
         <tr>
           <td className="zdj">
-            <img src={data.image}></img>
+            <img src={data.image} alt="peirdols ie"></img>
           </td>
         </tr>
       </tr>

@@ -3,7 +3,8 @@ import NameForm from "./container/LoginFrom";
 import About from "./container/About";
 import Home from "./container/Homepage";
 import WebChat from "./container/Chat";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Chat from "./container/chat/Chat";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<NameForm />} />
-        <Route path="/chat" element={<WebChat />} />
+        <Route path="/chat1" element={<WebChat />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
   );
