@@ -32,7 +32,7 @@ function About() {
           <div className="author">
             <img
               src="https://www.wykop.pl/cdn/c3201142/comment_D7XfAHC4AUqQWlMB6xHTtmo1947Zhpvu,w400.jpg"
-              alt=""
+              alt="website develeper"
               className="authorPhoto"
             ></img>
             <div className="container">
@@ -45,8 +45,8 @@ function About() {
 
           <div className="author">
             <img
-              src="https://st3.depositphotos.com/4678277/15125/i/1600/depositphotos_151251192-stock-photo-vertical-portrait-of-successful-and.jpg"
-              alt=""
+              src="https://st4.depositphotos.com/2249091/21946/i/1600/depositphotos_219464348-stock-photo-vertical-view-mother-holding-cute.jpg"
+              alt="website develeper"
               className="authorPhoto"
             ></img>
             <div className="container">
@@ -60,7 +60,7 @@ function About() {
           <div className="author">
             <img
               src="https://thumbs.dreamstime.com/b/szcz%C4%99%C5%9Bliwa-rodzina-pionowe-4016034.jpg"
-              alt=""
+              alt="website develeper"
               className="authorPhoto"
             ></img>
             <div className="container">
@@ -74,7 +74,7 @@ function About() {
           <div className="author">
             <img
               src="https://thumbs.dreamstime.com/b/para-seniora-razem-pionowe-805221.jpg"
-              alt=""
+              alt="website develeper"
               className="authorPhoto"
             ></img>
             <div className="container">
@@ -87,7 +87,7 @@ function About() {
         </div>
       </main>
       <footer className="aboutFooter">
-        <h4>Website created: 2022</h4>
+        <h4>Website created: June of 2022</h4>
       </footer>
     </>
   );
