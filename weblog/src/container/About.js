@@ -1,6 +1,8 @@
 import React from "react";
 import "./About.css";
 import Navbar from "./navbar.js";
+import Author from "./components/Author.js";
+
 function About() {
   return (
     <>
@@ -20,61 +22,26 @@ function About() {
         <h1 className="aboutText">Authors:</h1>
         <hr></hr>
         <div className="authorContainer">
-          <div className="author">
-            <img
-              src="https://www.wykop.pl/cdn/c3201142/comment_D7XfAHC4AUqQWlMB6xHTtmo1947Zhpvu,w400.jpg"
-              alt="website develeper"
-              className="authorPhoto"
-            ></img>
-            <div className="container">
-              <h4>
-                <b>Miłosz Stachlewski</b>
-              </h4>
-              <p>Backend</p>
-            </div>
-          </div>
-
-          <div className="author">
-            <img
-              src="https://st4.depositphotos.com/2249091/21946/i/1600/depositphotos_219464348-stock-photo-vertical-view-mother-holding-cute.jpg"
-              alt="website develeper"
-              className="authorPhoto"
-            ></img>
-            <div className="container">
-              <h4>
-                <b>Kielon Osadowski</b>
-              </h4>
-              <p>Backend</p>
-            </div>
-          </div>
-
-          <div className="author">
-            <img
-              src="https://thumbs.dreamstime.com/b/szcz%C4%99%C5%9Bliwa-rodzina-pionowe-4016034.jpg"
-              alt="website develeper"
-              className="authorPhoto"
-            ></img>
-            <div className="container">
-              <h4>
-                <b>Oskar Kotlarski</b>
-              </h4>
-              <p>Frontend</p>
-            </div>
-          </div>
-
-          <div className="author">
-            <img
-              src="https://thumbs.dreamstime.com/b/para-seniora-razem-pionowe-805221.jpg"
-              alt="website develeper"
-              className="authorPhoto"
-            ></img>
-            <div className="container">
-              <h4>
-                <b>Filip Popławski</b>
-              </h4>
-              <p>Frontent</p>
-            </div>
-          </div>
+          <Author
+            source="https://www.wykop.pl/cdn/c3201142/comment_D7XfAHC4AUqQWlMB6xHTtmo1947Zhpvu,w400.jpg"
+            name="Miłosz Stachlewski"
+            role="Backend"
+          />
+          <Author
+            source="https://st4.depositphotos.com/2249091/21946/i/1600/depositphotos_219464348-stock-photo-vertical-view-mother-holding-cute.jpg"
+            name="Kielon"
+            role="Backend"
+          />
+          <Author
+            source="https://thumbs.dreamstime.com/b/para-seniora-razem-pionowe-805221.jpg"
+            name="Filip Popławski"
+            role="Frontend"
+          />
+          <Author
+            source="https://thumbs.dreamstime.com/b/szcz%C4%99%C5%9Bliwa-rodzina-pionowe-4016034.jpg"
+            name="Oskar Kotlarski"
+            role="Frontend"
+          />
         </div>
       </main>
       <footer className="aboutFooter">
