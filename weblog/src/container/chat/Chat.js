@@ -1,101 +1,22 @@
 import React from "react";
 import "./chat.css";
+import Navbar from "./navbar";
+import SideBar from "./sidebar";
+import Message from "./components/message";
+import Users from "./ChannelUsers";
+
 const ChatPage = () => {
   return (
     <div className="body">
       <div className="left-bar">
-        <div className="user-list">
-          <img
-            src="http://ocen-piwo.pl/upload/192ff0523b0ef20d9c28b716c29a1a52.webp"
-            alt="romper"
-            className="prof-pic"
-          />
-          <div className="user">username</div>
-        </div>
-        <div className="user-list">
-          <img
-            src="http://ocen-piwo.pl/upload/192ff0523b0ef20d9c28b716c29a1a52.webp"
-            alt="romper"
-            className="prof-pic"
-          />
-          <div className="user">username</div>
-        </div>
-        <div className="user-list">
-          <img
-            src="http://ocen-piwo.pl/upload/192ff0523b0ef20d9c28b716c29a1a52.webp"
-            alt="romper"
-            className="prof-pic"
-          />
-          <div className="user">username</div>
-        </div>
-        <div className="user-list">
-          <img
-            src="http://ocen-piwo.pl/upload/192ff0523b0ef20d9c28b716c29a1a52.webp"
-            alt="romper"
-            className="prof-pic"
-          />
-          <div className="user">username</div>
-        </div>
+        <SideBar />
       </div>
-
       <div className="right-bar">
-        <nav id="navbar">
-          <div className="navbarM">
-            <a href="http://localhost:3000/About">About</a>
-            <a href="http://localhost:3000/Chat">Channels</a>
-          </div>
-          <div className="navbarT">nazwa kanalu</div>
-          <div className="navSpacer"></div>
-          <div className="navbarL">
-            <a id="logout" href="http://localhost:3000/Login">
-              Logout
-            </a>
-          </div>
-        </nav>
+        <Navbar />
         <div className="chat-window">
           <div className="messages">
-            <div className="message-block message-block-my ">
-              moja wiadomosc
-            </div>
-
-            <div className="message-block message-block-not-my">
-              nie moja wiadomosc
-            </div>
-            <div className="message-block message-block-my ">
-              moja wiadomosc
-            </div>
-
-            <div className="message-block message-block-not-my">
-              nie moja wiadomosc
-            </div>
-            <div className="message-block message-block-my ">
-              moja wiadomosc
-            </div>
-
-            <div className="message-block message-block-not-my">
-              nie moja wiadomosc
-            </div>
-            <div className="message-block message-block-my ">
-              moja wiadomosc
-            </div>
-
-            <div className="message-block message-block-not-my">
-              nie moja wiadomosc
-            </div>
-            <div className="message-block message-block-my ">
-              moja wiadomosc
-            </div>
-
-            <div className="message-block message-block-not-my">
-              nie moja wiadomosc
-            </div>
-            <div className="message-block message-block-my ">
-              moja wiadomosc
-            </div>
-
-            <div className="message-block message-block-not-my">
-              nie moja wiadomosc
-            </div>
+            <Message content="message" who="sent" />
+            <Message content="message" who="received" />
           </div>
         </div>
         <div className="send-message">

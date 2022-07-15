@@ -2,13 +2,15 @@
     display:flex;
     background-color: #282c34;
 }
-
 @media only screen and (max-width:680px){
     .chat-window{
         max-width:none;
     }
+    
 }
-
+.left-bar{
+    background: black;
+}
 .right-bar{
     width:80%;
 }
@@ -18,13 +20,7 @@
 nav{
     width:80%;
 }
-.left-bar{
-    display:flex !important;
-    width:20%;  
-    background-color: #2563eb;
-    height:100vh;
-    overflow-y: scroll;
-}
+
 
 .prof-pic{
     height:8%;
@@ -69,22 +65,6 @@ nav{
     height:85vh;
     }
 
-
-/*
-.send-message textarea{
-    height:9vh;
-    outline:none;
-    resize:none;
-    overflow:auto;
-    border:1px solid black;
-    width:100%;
-    font-size:40px;
-    overflow-y: hidden;
-    transform:translate(0%,4%);
-    background-color: #1e3a8a;
-    box-sizing: border-box;
-}
-*/
 .send-message{
     width:100%;
     box-sizing:border-box;
@@ -119,11 +99,6 @@ nav{
     font-size: 1.25rem;
 }
 
-.message-block-my,
-.message-block-not-my{
-    max-width:fit-content;
-    margin:10px;
-}
 .chat-window{
     display:grid;
     width:100%;
@@ -134,24 +109,7 @@ nav{
     display: flex;
 }
 
-.message-block-my{
-    margin-bottom:20px;
-    padding:20px;
-    font-size:20px;
-    min-width: fit-content;
-    word-wrap: break-word;
-    align-self: flex-end;
-    background-color: aquamarine;
-}
-.message-block-not-my{
-    background-color:#96aac4;
-    text-align:right;
-    min-width: fit-content;
-    word-wrap: break-word;
-    padding:20px;
-    font-size:20px;
-    align-self: flex-start;
-}
+
 
 .messages{
     height: 80vh;
@@ -161,33 +119,3 @@ nav{
     align-items: center;
 }
 
-nav{
-    width: 100vw;
-    background-color: #2563eb;
-    display: flex;
-    min-width: fit-content;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-a {
-    margin: 0%;
-    color: white;
-    text-decoration: none;
-    float: left;
-    padding: 24px 40px;
-    font-size: 3vh;
-    text-align: center;
-}
-.navbarT{
-    font-size:3.7rem;
-    color:white;
-}
-a:hover{
-    background-color: #5f6268;
-    color: black;
-}
-.navSpacer{
-    flex:0
-}
