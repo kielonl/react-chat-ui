@@ -1,27 +1,58 @@
-*{
-    background-color: aliceblue;
-}
 .body{
     display:flex;
+    background-color: #282c34;
 }
 
-@media only screen and (min-width:768px){
-    .body{
-        background-color: black;
-    }
+@media only screen and (max-width:680px){
     .chat-window{
         max-width:none;
     }
-    
-    
+}
+
+.right-bar{
+    width:80%;
+}
+.send-message{
+    width:80%;
+}
+nav{
+    width:80%;
 }
 .left-bar{
-    display:none;
+    display:flex !important;
+    width:20%;  
+    background-color: #2563eb;
+    height:100vh;
+    overflow-y: scroll;
 }
+
+.prof-pic{
+    height:8%;
+    width:8%;
+    border-radius: 100%;
+}
+.user-list{
+    display:flex;
+    flex-direction: row;
+    border-bottom:black 3em solid;
+}
+.user{
+    display:flex;
+    align-items: center;
+}
+
 
 .right-bar{
     width:100%;
 }
+.send-message{
+    width: 80%;
+}
+nav{
+    width: 100vw;
+}
+
+
 .channel-info-bar{
     background-color: #164e63;
     border-bottom:4px solid #64748b;
@@ -31,8 +62,7 @@
 }
 .channel-info-name{
     display:flex;
-    background-color: #164e63
-    ;
+    background-color: #164e63;
 }
 
 .chat-window{
@@ -75,7 +105,7 @@
     outline: none;
     border: none;
     padding-bottom:-1px;
-    letter-spacing: 2px;
+    letter-spacing: 1%;
 }
 .send-message .send{
     background-color: #282c34;
@@ -91,38 +121,73 @@
 
 .message-block-my,
 .message-block-not-my{
-    padding:1%;
-    min-width: 20rem;
-    max-width:200px;
+    max-width:fit-content;
+    margin:10px;
 }
 .chat-window{
     display:grid;
     width:100%;
 }
 
+.message-block {
+    width: 100%;
+    display: flex;
+}
+
 .message-block-my{
-    background-color: aquamarine;
-    text-align:right;
-    justify-self: right;
-    align-content: right;
-    margin-top:15px;
     margin-bottom:20px;
-    margin-right:10px;
-    padding:10px;
+    padding:20px;
+    font-size:20px;
+    min-width: fit-content;
+    word-wrap: break-word;
+    align-self: flex-end;
+    background-color: aquamarine;
 }
 .message-block-not-my{
-    margin-bottom:20px;
-    padding:10px;
-    margin-top:15px;
     background-color:#96aac4;
-    justify-self: left;
-    margin-left:10px;
+    text-align:right;
+    min-width: fit-content;
+    word-wrap: break-word;
+    padding:20px;
+    font-size:20px;
+    align-self: flex-start;
 }
 
 .messages{
-    padding: 10px;
     height: 80vh;
     overflow-y: scroll;
-    display: flex;
+    display:flex;
     flex-direction: column;
+    align-items: center;
+}
+
+nav{
+    width: 100vw;
+    background-color: #2563eb;
+    display: flex;
+    min-width: fit-content;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a {
+    margin: 0%;
+    color: white;
+    text-decoration: none;
+    float: left;
+    padding: 24px 40px;
+    font-size: 3vh;
+    text-align: center;
+}
+.navbarT{
+    font-size:3.7rem;
+    color:white;
+}
+a:hover{
+    background-color: #5f6268;
+    color: black;
+}
+.navSpacer{
+    flex:0
 }
