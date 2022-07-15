@@ -1,8 +1,10 @@
 import React from "react";
 import "./About.css";
+import Navbar from "./navbar.js";
 function About() {
   return (
     <>
+      <Navbar></Navbar>
       <link rel="preconnect" href="https://fonts.googleapis.com"></link>
       <link
         rel="preconnect"
@@ -13,18 +15,7 @@ function About() {
         href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
         rel="stylesheet"
       ></link>
-      <nav id="navbar">
-        <div className="navbarM">
-          <a href="http://localhost:3000/About">About</a>
-          <a href="http://localhost:3000/Chat">Chat</a>
-        </div>
-        <div className="navSpacer"></div>
-        <div className="navbarL">
-          <a id="logout" href="http://localhost:3000/Login">
-            Logout
-          </a>
-        </div>
-      </nav>
+
       <main>
         <h1 className="aboutText">Authors:</h1>
         <hr></hr>
@@ -81,7 +72,7 @@ function About() {
               <h4>
                 <b>Filip Popławski</b>
               </h4>
-              <p>Frontend</p>
+              <p>Frontent</p>
             </div>
           </div>
         </div>
