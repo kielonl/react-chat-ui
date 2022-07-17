@@ -1,18 +1,19 @@
 import React from "react";
-import "./chat.css";
+import "./public/chat.css";
 import Navbar from "./navbar";
 import SideBar from "./sidebar";
 import Message from "./components/message";
-import Users from "./ChannelUsers";
+import SideBtn from "./components/SideBarBtn";
 
 const ChatPage = () => {
   return (
     <div className="body">
+      <SideBtn />
       <div className="left-bar">
         <SideBar />
       </div>
       <div className="right-bar">
-        <Navbar />
+        <Navbar itemListElement="h1" />
         <div className="chat-window">
           <div className="messages">
             <Message content="message" who="sent" />

@@ -1,7 +1,8 @@
 import React from "react";
-import "./sidebar.css";
-import Users from "./ChannelUsers";
+import "./public/sidebar.css";
+import Users from "./components/ChannelUsers";
 import { slide as Menu } from "react-burger-menu";
+import "./public/sidebtn.css";
 const SideBar = () => {
   return (
     <Menu>
