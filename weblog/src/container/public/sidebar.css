@@ -1,4 +1,4 @@
-
+/*
   .bm-burger-button {
     position: absolute;
     width: 50px;
@@ -22,6 +22,7 @@
   
   .bm-cross {
     background: #bdc3c7;
+    display: none;
   }
   
   .bm-menu {
@@ -44,7 +45,4 @@
   
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
-  }
-  *{
-    overflow-x: hidden;
-  }
+  }*/
