@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Homepage.css";
+import "./public/Homepage.css";
 const axios = require("axios");
 const Home = () => {
   const [data, setDate] = useState([]);

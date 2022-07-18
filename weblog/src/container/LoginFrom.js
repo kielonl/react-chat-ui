@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./LoginFrom.css";
+import "./public/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
 const url = "http://localhost:8080/users";
 const NameForm = () => {
@@ -47,7 +47,9 @@ const NameForm = () => {
         />
         <p class="image-format-info">(jpg,jpeg,png)</p>
         <div id="button">
-          <button onClick={handleSumibt}>Submit</button>
+          <button className="loginButton" onClick={handleSumibt}>
+            Submit
+          </button>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React from "react";
-import "./navbar.css";
+import "./../public/navbar.css";
 function Navbar() {
   return (
-    <nav id="navbar">
+    <nav className="MainNavbar" id="navbar">
       <div className="navbarM">
         <a href="http://localhost:3000/About">About</a>
         <a href="http://localhost:3000/Chat">Chat</a>

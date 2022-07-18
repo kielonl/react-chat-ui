@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "./public/About.css";
 import Navbar from "./components/navbar.js";
 import Author from "./components/Author.js";
 
