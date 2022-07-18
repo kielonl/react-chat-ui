@@ -3,29 +3,21 @@ import { useNavigate, Link } from "react-router-dom";
 import "./Chat.css";
 
 const axios = require("axios");
-const chanelUrl = "http://localhost:8080/channels";
 const userUrl = "http://localhost:8080/users";
 const WebChat = () => {
   const [data, setDate] = useState([]);
   const [channels, setchannels] = useState("");
-  //const [channelOwner, setowner] = useState("");
-  const navigate = useNavigate();
-  //odbieranie danych użytkownik
   const handleSubmit = async (e) => {
     console.log(channels);
     axios
       .get(userUrl)
       .then((resp) => {
-        console.log("pobieranie danych", resp.data);
         setDate(resp.data);
       })
       .catch((err) => console.log(err));
   };
 
-  //wysyłanie danych do chanelss
-  //do poprawy
-
-  const handlePost = async (e) => {
+  const pulldata = async (e) => {
     const axios = require("axios");
     const channelArray = [];
     const channelsGET = await axios.get("http://localhost:8080/channels");
@@ -45,9 +37,8 @@ const WebChat = () => {
     setDate(channelArray);
   };
   useEffect(() => {
-    handlePost();
+    pulldata();
   }, []);
-  console.log(data);
   if (!data) return <div></div>;
   return (
     <div className="abouttext">
@@ -68,8 +59,6 @@ const WebChat = () => {
               <table className="liusername" key={index}>
                 <tr>
                   <td>{data.username}</td>
-
-                  <td>{data.channelUuid}</td>
 
                   <td>{data.dataTime}</td>
 
