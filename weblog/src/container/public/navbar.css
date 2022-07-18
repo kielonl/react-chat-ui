@@ -11,7 +11,7 @@ a:hover{
     background-color: #5f6268;
     color: black;
 }
-nav{
+.MainNavbar{
     width: 100vw;
     background-color: #2563eb;
     display: flex;
