@@ -11,7 +11,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<NameForm />} />
-        <Route path="/chat" element={<WebChat />} />
       </Routes>
     </Router>
   );
