@@ -1,9 +1,9 @@
 import React from "react";
-import "./public/chat.css";
+import "../style/chat.css";
 import Navbar from "./navbar";
 import SideBar from "./sidebar";
-import Message from "./components/message";
-import SideBtn from "./components/SideBarBtn";
+import Message from "./message";
+import SideBtn from "./SideBarBtn";
 
 const ChatPage = () => {
   return (

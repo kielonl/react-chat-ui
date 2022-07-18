@@ -1,7 +1,7 @@
 import React from "react";
-import "./About.css";
-import Navbar from "./components/navbar.js";
-import Author from "./components/Author.js";
+import "../style/About.css";
+import Navbar from "./navbar.js";
+import Author from "./Author.js";
 
 function About() {
   return (
