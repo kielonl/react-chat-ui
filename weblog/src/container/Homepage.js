@@ -8,7 +8,7 @@ const userUrl = "http://localhost:8080/users";
 const WebChat = () => {
   const [data, setDate] = useState([]);
   const [channels, setchannels] = useState("");
-  const [channelOwner, setowner] = useState("");
+  //const [channelOwner, setowner] = useState("");
   const navigate = useNavigate();
   //odbieranie danych użytkownik
   const handleSubmit = async (e) => {
@@ -21,31 +21,34 @@ const WebChat = () => {
       })
       .catch((err) => console.log(err));
   };
-  useEffect(() => {
-    handleSubmit();
-  }, []);
+
   //wysyłanie danych do chanelss
   //do poprawy
 
   const handlePost = async (e) => {
     const axios = require("axios");
-    console.log(channels);
-    axios
-      .get("http://localhost:8080/channels")
-      .then((resp) => {
-        console.log("pobieranie danych", resp.data);
-        axios
-          .get("http://localhost:8080/users/" + resp.data.owner)
-          .then((resultofuserget) => {
-            console.log(resultofuserget);
-          });-
-        //   setDate(resp.data);
-      })
-      .catch((err) => console.log(err));
+    const channelArray = [];
+    const channelsGET = await axios.get("http://localhost:8080/channels");
+    for (let i = 0; i < channelsGET.data.length; i++) {
+      const ch = channelsGET.data[i];
+      const result = await axios.get("http://localhost:8080/users/" + ch.owner);
+
+      const tab2 = {
+        username: result.data.username,
+        channelUuid: ch.channelUuid,
+        dataTime: ch.dataTime,
+        maxNumberOfMembers: ch.maxNumberOfMembers,
+      };
+      channelArray.push(tab2);
+    }
+
+    setDate(channelArray);
   };
   useEffect(() => {
     handlePost();
   }, []);
+  console.log(data);
+  if (!data) return <div></div>;
   return (
     <div className="abouttext">
       <h1>WebChat</h1>
@@ -64,7 +67,7 @@ const WebChat = () => {
             return (
               <table className="liusername" key={index}>
                 <tr>
-                  <td>{data.owner}</td>
+                  <td>{data.username}</td>
 
                   <td>{data.channelUuid}</td>
 
