@@ -34,7 +34,12 @@ const WebChat = () => {
       .get("http://localhost:8080/channels")
       .then((resp) => {
         console.log("pobieranie danych", resp.data);
-        setDate(resp.data);
+        axios
+          .get("http://localhost:8080/users/" + resp.data.owner)
+          .then((resultofuserget) => {
+            console.log(resultofuserget);
+          });-
+        //   setDate(resp.data);
       })
       .catch((err) => console.log(err));
   };
