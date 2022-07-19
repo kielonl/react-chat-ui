@@ -5,50 +5,87 @@ const Home = () => {
   const [data, setDate] = useState([]);
   const url = "http://localhost:8080/users";
 
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((resp) => {
-        console.log("pobieranie danych", resp.data);
-        setDate(resp.data);
-      })
-      .catch((err) => console.log(err));
-  });
+  const axios = require("axios");
+  const userUrl = "http://localhost:8080/users";
+  const WebChat = () => {
+    const [data, setDate] = useState([]);
+    const [channels, setchannels] = useState("");
+    const handleSubmit = async (e) => {
+      console.log(channels);
+      axios
+        .get(userUrl)
+        .then((resp) => {
+          setDate(resp.data);
+        })
+        .catch((err) => console.log(err));
+    };
 
-  const arr = data.map((data, index) => {
+    const pulldata = async (e) => {
+      const axios = require("axios");
+      const channelArray = [];
+      const channelsGET = await axios.get("http://localhost:8080/channels");
+      for (let i = 0; i < channelsGET.data.length; i++) {
+        const ch = channelsGET.data[i];
+        const result = await axios.get(
+          "http://localhost:8080/users/" + ch.owner
+        );
+
+        const tab2 = {
+          username: result.data.username,
+          channelUuid: ch.channelUuid,
+          dataTime: ch.dataTime,
+          maxNumberOfMembers: ch.maxNumberOfMembers,
+        };
+        channelArray.push(tab2);
+      }
+
+      setDate(channelArray);
+    };
+    useEffect(() => {
+      pulldata();
+    }, []);
+    if (!data) return <div></div>;
     return (
-      <tr>
-        <td>
-          <th>username</th>
-        </td>
-        <tr>
-          <td>{data.username}</td>
-        </tr>
-        <td>
-          <th>Browser</th>
-        </td>
-        <tr>
-          <td>{data.browser.browserName}</td>
-        </tr>
-        <td>
-          <th>Url to image</th>
-        </td>
-        <tr>
-          <td className="zdj">
-            <img src={data.image} alt="peirdols ie"></img>
-          </td>
-        </tr>
-      </tr>
-    );
-  });
+      <div className="abouttext">
+        <h1>WebChat</h1>
+        <div id="chanels">
+          <input
+            type={"text"}
+            placeholder="Podaj nazwe kanału"
+            name="chanelname"
+            value={channels}
+            onChange={(e) => setchannels(e.target.value)}
+            className="channelname"
+          ></input>
+          <button onClick={handleSubmit}>Create chanel</button>
+          <div id="listusers">
+            {data.map((data, index) => {
+              return (
+                <table className="liusername" key={index}>
+                  <tr>
+                    <td>{data.username}</td>
 
-  return (
-    <div className="homepage">
-      <h1 className="home">Home page</h1>
-      <div>
-        <table id="table1">{arr}</table>
+                    <td>{data.dataTime}</td>
+
+                    <td>{data.maxNumberOfMembers}</td>
+                  </tr>
+                </table>
+              );
+            })}
+          </div>
+
+          <div id="listchannels">
+            <table>
+              <tr>
+                <td>List channels.</td>
+              </tr>
+              <tr></tr>
+            </table>
+          </div>
+        </div>
+        <p></p>
       </div>
-    </div>
-  );
+    );
+  };
 };
-export default Home;
+export default WebChat;
