@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./LoginFrom.css";
-import WebChat from "./Chat";
-import { useNavigate, Link } from "react-router-dom";
+import "./public/LoginFrom.css";
+import { useNavigate } from "react-router-dom";
 const url = "http://localhost:8080/users";
 const NameForm = () => {
   const [username, setName] = useState("");
@@ -28,26 +27,30 @@ const NameForm = () => {
 
   return (
     <div id="fromlog">
-      <div id="upertext">Super app chat</div>
-      <div id="log">Login</div>
       <div id="int">
+        <h1 id="upertext">Chattuj 😈😈😈</h1>
+        <p class="input-text-above">Username</p>
         <input
           type={"text"}
           name="user"
           value={username}
-          placeholder="name/login"
+          autoComplete="off"
           onChange={(e) => setName(e.target.value)}
         />
+        <p class="input-text-above">Image URL</p>
         <input
           type={"text"}
           name="url"
           value={imageUrl}
-          placeholder="url"
+          autoComplete="off"
           onChange={(e) => setUrl(e.target.value)}
         />
-      </div>
-      <div id="button">
-        <button onClick={handleSumibt}>Submit</button>
+        <p class="image-format-info">(jpg,jpeg,png)</p>
+        <div id="button">
+          <button className="loginButton" onClick={handleSumibt}>
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

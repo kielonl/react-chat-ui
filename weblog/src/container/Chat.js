@@ -1,54 +1,33 @@
-import React, { useEffect, useState } from "react";
-import "./Homepage.css";
-const axios = require("axios");
-const Home = () => {
-  const [data, setDate] = useState([]);
-  const url = "http://localhost:8080/users";
+import React from "react";
+import "./public/chat.css";
+import Navbar from "./components/navbar";
+import SideBar from "./components/sidebar";
+import Message from "./components/message";
+import SideBtn from "./components/SideBarBtn";
 
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((resp) => {
-        console.log("pobieranie danych", resp.data);
-        setDate(resp.data);
-      })
-      .catch((err) => console.log(err));
-  });
-
-  const arr = data.map((data, index) => {
-    return (
-      <tr>
-        <td>
-          <th>username</th>
-        </td>
-        <tr>
-          <td>{data.username}</td>
-        </tr>
-        <td>
-          <th>Browser</th>
-        </td>
-        <tr>
-          <td>{data.browser.browserName}</td>
-        </tr>
-        <td>
-          <th>Url to image</th>
-        </td>
-        <tr>
-          <td className="zdj">
-            <img src={data.image}></img>
-          </td>
-        </tr>
-      </tr>
-    );
-  });
-
+const ChatPage = () => {
   return (
-    <div className="homepage">
-      <h1 className="home">Home page</h1>
-      <div>
-        <table id="table1">{arr}</table>
+    <div className="body">
+      <SideBtn />
+      <div className="left-bar">
+        <SideBar />
+      </div>
+      <div className="right-bar">
+        <Navbar itemListElement="h1" />
+        <div className="chat-window">
+          <div className="messages">
+            <Message content="message" who="sent" />
+            <Message content="message" who="received" />
+          </div>
+        </div>
+        <div className="send-message">
+          <input placeholder="..."></input>
+          <button type="submit" className="send">
+            🍻
+          </button>
+        </div>
       </div>
     </div>
   );
 };
-export default Home;
+export default ChatPage;
