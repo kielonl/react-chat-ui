@@ -3,7 +3,7 @@ import axios from "axios";
 import "../style/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
 const url = "http://localhost:8080/users";
-const NameForm = (props) => {
+const LoginFrom = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const navigate = useNavigate();
@@ -57,4 +57,4 @@ const NameForm = (props) => {
     </div>
   );
 };
-export default NameForm;
+export default LoginFrom;

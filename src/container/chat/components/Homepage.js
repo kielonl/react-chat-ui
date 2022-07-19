@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../style/Homepage.css";
 const axios = require("axios");
-const WebChat = (props) => {
-  const userUrl = "http://localhost:8080/users";
+const Homepage = (props) => {
   const ChanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
   const [maxusers, setUsers] = useState("");
-  const [chanelname, setchaname] = useState("");
+  const [name_Channnel, setname_Channel] = useState("");
   const handleSubmit = async (e) => {
     axios
       .post(ChanelUrl, {
         uuid: props.user.uuid,
         maxUsers: maxusers,
-        channelName: chanelname,
+        channelName: name_Channnel,
       })
       .then(function (response) {
         console.log(response);
@@ -21,9 +20,6 @@ const WebChat = (props) => {
         console.log(error);
       });
   };
-
-  ///////////////////
-
   const pulldata = async (e) => {
     const channelArray = [];
     const channelsGET = await axios.get("http://localhost:8080/channels");
@@ -52,15 +48,15 @@ const WebChat = (props) => {
         <input
           type={"text"}
           placeholder="Podaj nazwe kanału"
-          name="chanelname"
-          value={chanelname}
-          onChange={(e) => setchaname(e.target.value)}
+          name="Channel_name"
+          value={name_Channnel}
+          onChange={(e) => setname_Channel(e.target.value)}
           autoComplete="off"
         ></input>
         <input
           type={"number"}
           placeholder="ile użytkowników"
-          name="chanelname"
+          name="Max_users"
           value={maxusers}
           onChange={(e) => setUsers(e.target.value)}
           autoComplete="off"
@@ -96,4 +92,4 @@ const WebChat = (props) => {
   );
 };
 
-export default WebChat;
+export default Homepage;
