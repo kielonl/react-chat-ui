@@ -47,24 +47,15 @@ const Chanels = () => {
                 onChange={(e) => handleServiceChange(e, index)}
                 required
               />
-              {serviceList.length - 1 === index &&
-                serviceList.length < 4 &&
-                ((
-                  <button
-                    type="button"
-                    onClick={handleServiceAdd}
-                    className="add-btn"
-                  >
-                    <span>Add a Service</span>
-                  </button>
-                ),
-                (
-                  <span>
-                    <button className="rtv" onClick={handleSubmit}>
-                      klik
-                    </button>
-                  </span>
-                ))}
+              {serviceList.length - 1 === index && serviceList.length < 4 && (
+                <button
+                  type="button"
+                  onClick={handleServiceAdd}
+                  className="add-btn"
+                >
+                  <span>Add a Service</span>
+                </button>
+              )}
             </div>
             <div className="second-division">
               {serviceList.length !== 1 && (
@@ -79,6 +70,16 @@ const Chanels = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="output">
+        <h2>Output</h2>
+        {serviceList &&
+          serviceList.map((singleService, index) => (
+            <ul key={index}>
+              {singleService.service && <li>{singleService.service}</li>}
+            </ul>
+          ))}
       </div>
     </div>
   );
@@ -123,15 +124,6 @@ export default Chanels;
     </div>
   );
 };
-<div className="output">
-        <h2>Output</h2>
-        {serviceList &&
-          serviceList.map((singleService, index) => (
-            <ul key={index}>
-              {singleService.service && <li>{singleService.service}</li>}
-            </ul>
-          ))}
-      </div>
-      
+
 
 */

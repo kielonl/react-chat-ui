@@ -3,10 +3,11 @@ import axios from "axios";
 import "../style/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
 const url = "http://localhost:8080/users";
-const NameForm = () => {
+const NameForm = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const navigate = useNavigate();
+  console.log(props);
 
   const handleSumibt = async (e) => {
     e.preventDefault();
@@ -18,7 +19,8 @@ const NameForm = () => {
       })
       .then(function (response) {
         console.log(response);
-        navigate("/chat");
+        props.setUser(response.data);
+        navigate("/home");
       })
       .catch(function (error) {
         console.log(error);
