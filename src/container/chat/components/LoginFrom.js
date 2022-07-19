@@ -8,7 +8,6 @@ const LoginFrom = (props) => {
   const [imageUrl, setUrl] = useState("");
   const navigate = useNavigate();
   console.log(props);
-
   const handleSumibt = async (e) => {
     e.preventDefault();
     console.log(username, imageUrl);
@@ -26,12 +25,11 @@ const LoginFrom = (props) => {
         console.log(error);
       });
   };
-
   return (
     <div id="fromlog">
       <div id="int">
-        <h1 id="upertext">Chattuj 😈😈😈</h1>
-        <p class="input-text-above">Username</p>
+        <h1 id="upertext">Enter the space</h1>
+        <p class="input_text_above">Username</p>
         <input
           type={"text"}
           name="user"
@@ -39,7 +37,7 @@ const LoginFrom = (props) => {
           autoComplete="off"
           onChange={(e) => setName(e.target.value)}
         />
-        <p class="input-text-above">Image URL</p>
+        <p class="input_text_above">Image URL</p>
         <input
           type={"text"}
           name="url"
