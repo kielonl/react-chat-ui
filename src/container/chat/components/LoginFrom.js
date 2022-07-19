@@ -18,7 +18,7 @@ const NameForm = () => {
       })
       .then(function (response) {
         console.log(response);
-        navigate("/Chat");
+        navigate("/home");
       })
       .catch(function (error) {
         console.log(error);
