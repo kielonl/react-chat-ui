@@ -1,5 +1,5 @@
 import React from "react";
-import "../public/sidebtn.css";
+import "./public/sidebtn.css";
 
 const SideBtn = () => {
   return (

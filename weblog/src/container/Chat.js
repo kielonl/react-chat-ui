@@ -1,5 +1,5 @@
 import React from "react";
-import "./public/chat.css";
+import "./components/public/chat.css";
 import Navbar from "./components/navbar";
 import SideBar from "./components/sidebar";
 import Message from "./components/message";

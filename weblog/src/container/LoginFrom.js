@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./public/LoginFrom.css";
+import "./components/public/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
 const url = "http://localhost:8080/users";
 const NameForm = () => {
