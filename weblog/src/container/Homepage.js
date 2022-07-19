@@ -77,7 +77,7 @@ const Home = () => {
           <div id="listchannels">
             <table>
               <tr>
-                <td>List channels.</td>
+                <td>List channels</td>
               </tr>
               <tr></tr>
             </table>
