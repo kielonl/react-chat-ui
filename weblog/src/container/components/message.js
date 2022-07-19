@@ -1,10 +1,11 @@
 import React from "react";
 import "../public/message.css";
+
 const Message = (props) => {
   return (
     <>
       <h1
-        class={
+        className={
           props.who === "sent"
             ? "message-block message-block-my"
             : "message-block message-block-not-my"

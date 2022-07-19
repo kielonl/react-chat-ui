@@ -29,7 +29,7 @@ const NameForm = () => {
     <div id="fromlog">
       <div id="int">
         <h1 id="upertext">Chattuj 😈😈😈</h1>
-        <p class="input-text-above">Username</p>
+        <p className="input-text-above">Username</p>
         <input
           type={"text"}
           name="user"
@@ -37,7 +37,7 @@ const NameForm = () => {
           autoComplete="off"
           onChange={(e) => setName(e.target.value)}
         />
-        <p class="input-text-above">Image URL</p>
+        <p className="input-text-above">Image URL</p>
         <input
           type={"text"}
           name="url"
@@ -45,7 +45,7 @@ const NameForm = () => {
           autoComplete="off"
           onChange={(e) => setUrl(e.target.value)}
         />
-        <p class="image-format-info">(jpg,jpeg,png)</p>
+        <p className="image-format-info">(jpg,jpeg,png)</p>
         <div id="button">
           <button className="loginButton" onClick={handleSumibt}>
             Submit

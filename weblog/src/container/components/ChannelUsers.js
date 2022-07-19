@@ -37,7 +37,11 @@ const Users = () => {
   return (
     <>
       {ChannelUsers.map((element, index) => {
-        return <h1 className="menu-item">{element.username}</h1>;
+        return (
+          <h1 key={index} className="menu-item">
+            {element.username}
+          </h1>
+        );
       })}
     </>
   );
