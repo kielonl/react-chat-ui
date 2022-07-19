@@ -1,29 +1,29 @@
 :root {
-    --btn-bg-color: #1e40af;
+  --btn-bg-color: #1b3aa0;
 }
 .side-btn .circle {
-    height: 5em;
-    width: 5em;
-    background-color: var(--btn-bg-color);
-    border-radius: 99%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-bottom: auto;
-    margin-top: auto;
-    margin-left: -2em;
+  height: 5em;
+  width: 5em;
+  background-color: var(--btn-bg-color);
+  border-radius: 99%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-left: -2em;
 }
 .arrow {
-    background-color: var(--btn-bg-color);
-    height: 2em;
-    width: 2em;
-    transform: rotate(45deg);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    border-top:3px solid white;
-    border-right:3px solid white;
-    margin-bottom: auto;
-    margin-top: auto;
-    margin-left: -0.3em;
+  background-color: var(--btn-bg-color);
+  height: 2em;
+  width: 2em;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-left: -0.3em;
 }
