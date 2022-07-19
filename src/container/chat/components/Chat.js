@@ -22,9 +22,6 @@ const ChatPage = () => {
         </div>
         <div className="send-message">
           <input placeholder="..."></input>
-          <button type="submit" className="send">
-            🍻
-          </button>
         </div>
       </div>
     </div>

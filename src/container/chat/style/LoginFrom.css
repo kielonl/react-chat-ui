@@ -72,7 +72,7 @@ body {
   outline: none;
   color: white;
 }
-button {
+.loginButton {
   margin-top: 50px;
   width: 100%;
   background-color: #ffffff;
@@ -84,7 +84,7 @@ button {
   cursor: pointer;
   border: none;
 }
-button:hover {
+loginButton:hover {
   background-color: #a1a1aa;
 }
 .image-format-info {

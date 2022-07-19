@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav id="navbar">
       <div className="navbarM">
         <a href="http://localhost:3000/About">About</a>
-        <a href="http://localhost:3000/Chat">Channels</a>
+        <a href="http://localhost:3000/chanels">Channels</a>
       </div>
       <div className="navbarT">nazwa kanalu</div>
       <div className="navSpacer"></div>
