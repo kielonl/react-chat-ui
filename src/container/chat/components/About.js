@@ -49,5 +49,8 @@ function About() {
       </footer>
     </>
   );
+  // {
+  //   this.state.persons.map((person) => <li key={person.id}>{person.name}</li>);
+  // }
 }
 export default About;

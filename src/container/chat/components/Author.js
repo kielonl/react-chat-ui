@@ -1,6 +1,5 @@
 import React from "react";
 import "../style/Author.css";
-
 function Author(props) {
   return (
     <div className="author">
