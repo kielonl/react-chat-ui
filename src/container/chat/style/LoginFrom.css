@@ -1,0 +1,72 @@
+body {
+  background-color: #2d2b2a;
+  letter-spacing: 0.5px;
+  font-family: "Red Hat Mono", monospace;
+}
+#upertext {
+  font-weight: bold;
+  color: greenyellow;
+}
+.input-text-above {
+  float: left;
+  font-weight: bold;
+}
+#fromlog {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+#int {
+  color: white;
+  background-color: #1c1917;
+  height: max-content;
+  width: 22.4rem;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgb(0, 136, 785);
+  box-shadow: 0 0 150px rgb(0, 136, 255);
+  padding: 50px 35px;
+}
+#int input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 300;
+  outline: none;
+  color: #5eead4;
+}
+.loginButton {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #00fff77a;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+loginButton:hover {
+  background-color: #a1a1aa;
+}
+.image-format-info {
+  color: #fde047;
+  font-size: 10px;
+  float: left;
+}
+
+.input_text_above {
+  color: #fde047;
+}
