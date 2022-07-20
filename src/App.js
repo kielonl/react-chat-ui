@@ -9,11 +9,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={<LoginFrom setUser={setUser} xd={"xd"} />}
-        />
+        <Route exact path="/" element={<LoginFrom setUser={setUser} />} />
         <Route path="/about" element={<About />} />
         <Route path="/home" element={<Homepage user={user} />} />
         <Route path="/chat" element={<Chatpage />} />

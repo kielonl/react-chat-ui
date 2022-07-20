@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import "../style/Homepage.css";
 const axios = require("axios");
 const Homepage = (props) => {
-  const ChanelUrl = "http://localhost:8080/channels";
+  const chanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
   const [maxusers, setUsers] = useState("");
   const [name_Channel, setname_Channel] = useState("");
   const handleSubmit = async (e) => {
     axios
-      .post(ChanelUrl, {
+      .post(chanelUrl, {
         uuid: props.user.uuid,
         maxUsers: maxusers,
         channelName: name_Channel,
@@ -29,25 +29,25 @@ const Homepage = (props) => {
       </div>
     );
   };
-  const pulldata = async (e) => {
+  const pullData = async (e) => {
     const channelArray = [];
     const channelsGET = await axios.get("http://localhost:8080/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
       const result = await axios.get("http://localhost:8080/users" + ch.owner);
 
-      const tab2 = {
+      const channelObject = {
         username: result.data.username,
         channelUuid: ch.channelUuid,
         dataTime: ch.dataTime,
         maxNumberOfMembers: ch.maxNumberOfMembers,
       };
-      channelArray.push(tab2);
+      channelArray.push(channelObject);
     }
     setDate(channelArray);
   };
   useEffect(() => {
-    pulldata();
+    pullData();
   }, []);
   if (!data) return <div></div>;
   return (
