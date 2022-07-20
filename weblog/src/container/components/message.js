@@ -8,6 +8,8 @@ const Message = (props) => {
         className={
           props.who === "sent"
             ? "message-block message-block-my"
+            : props.who === "notification"
+            ? "message-block message-block-notification"
             : "message-block message-block-not-my"
         }
       >

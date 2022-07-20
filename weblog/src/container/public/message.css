@@ -22,3 +22,12 @@
     font-size:20px;
     align-self: flex-start;
 }
+.message-block-notification{
+    text-align:center;
+    max-width: fit-content;
+    word-wrap: break-word;
+    padding:20px;
+    font-size:15px;
+    color: #a4a4a4;
+    align-self: center;
+}

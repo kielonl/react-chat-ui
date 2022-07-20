@@ -5,8 +5,7 @@ import SideBar from "./components/sidebar";
 import Message from "./components/message";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-
-const ENDPOINT = "http://localhost:8000/";
+const ENDPOINT = "http://localhost:8001/";
 let socket = io(ENDPOINT);
 socket.on("chat message", console.log);
 
@@ -15,18 +14,31 @@ const ChatPage = () => {
   const [message, setMessage] = useState("");
   const messages = useRef([]);
   const bottomRef = useRef(null);
+
+  const sendFile = (e) => {
+    const [file] = e.target.files;
+
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      socket.emit("chat message", {
+        type: "img",
+        value: reader.result,
+      });
+    };
+  };
+
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit("chat message", message);
+    socket.emit("chat message", {
+      type: "msg",
+      value: message,
+    });
     setMessage("");
   };
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [receivedMessage]);
-
-  socket.on("hello", (socket) => {
-    console.log("user conected " + socket);
-  });
 
   useEffect(() => {
     const event = (message) => {
@@ -34,16 +46,40 @@ const ChatPage = () => {
       console.log(message);
       setReceivedMessage(messages.current);
     };
+
+    const joinEvent = (socket) => {
+      console.log("user con " + socket);
+
+      messages.current = [
+        ...messages.current,
+        { type: "notification", value: "user conected: " + socket },
+      ];
+      setReceivedMessage(messages.current);
+    };
+    const leaveEvent = (socket) => {
+      console.log("user con " + socket);
+      messages.current = [
+        ...messages.current,
+        { type: "notification", value: "user disconected" },
+      ];
+      setReceivedMessage(messages.current);
+    };
+
     socket.on("chat message", event);
+    socket.on("hello", joinEvent);
+    socket.on("bye", leaveEvent);
 
     return () => {
+      socket.off("hello", joinEvent);
+      socket.off("bye", leaveEvent);
       socket.off("chat message", event);
     };
   }, []);
-
-  const listItems = receivedMessage.map((wiadomosc, i) => (
-    <Message key={i} content={wiadomosc} who="received" />
-  ));
+  const listItems = receivedMessage.map((wiadomosc, i) => {
+    if (wiadomosc.type === "img")
+      return <img src={wiadomosc.value} alt="Red dot" />;
+    return <Message key={i} content={wiadomosc.value} who={wiadomosc.type} />;
+  });
   return (
     <div className="body">
       <SideBtn />
@@ -69,6 +105,7 @@ const ChatPage = () => {
               id="input"
               autoComplete="off"
             ></input>
+            <input type="file" className="sendFile" onChange={sendFile} />
             <button type="submit" onClick={sendMessage} className="send">
               🍻
             </button>
