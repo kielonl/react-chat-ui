@@ -1,12 +1,15 @@
 import React from "react";
-import "./../public/navbar.css";
-function Navbar() {
+import "../style/navbar.css";
+
+const Navbar = () => {
   return (
-    <nav className="MainNavbar" id="navbar">
+    <nav id="navbar">
       <div className="navbarM">
         <a href="http://localhost:3000/About">About</a>
-        <a href="http://localhost:3000/Chat">Chat</a>
+        <a href="http://localhost:3000/chanels">Channels</a>
       </div>
+      <div className="navbarT">nazwa kanalu</div>
+      <div className="navSpacer"></div>
       <div className="navbarL">
         <a id="logout" href="http://localhost:3000/Login">
           Logout
@@ -14,5 +17,5 @@ function Navbar() {
       </div>
     </nav>
   );
-}
+};
 export default Navbar;

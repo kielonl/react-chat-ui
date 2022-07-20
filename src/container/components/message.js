@@ -1,5 +1,5 @@
 import React from "react";
-import "../public/message.css";
+import "../style/message.css";
 const Message = (props) => {
   return (
     <>

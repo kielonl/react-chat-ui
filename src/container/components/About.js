@@ -1,7 +1,7 @@
 import React from "react";
-import "./public/About.css";
-import Navbar from "./components/navbar.js";
-import Author from "./components/Author.js";
+import "../style/About.css";
+import Navbar from "./navbar.js";
+import Author from "./Author.js";
 
 function About() {
   return (
@@ -49,8 +49,5 @@ function About() {
       </footer>
     </>
   );
-  // {
-  //   this.state.persons.map((person) => <li key={person.id}>{person.name}</li>);
-  // }
 }
 export default About;

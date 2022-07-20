@@ -1,9 +1,9 @@
 import React from "react";
-import "./public/chat.css";
-import Navbar from "./components/navbar";
-import SideBar from "./components/sidebar";
-import Message from "./components/message";
-import SideBtn from "./components/SideBarBtn";
+import "../style/chat.css";
+import Navbar from "./navbar";
+import SideBar from "./sidebar";
+import Message from "./message";
+import SideBtn from "./SideBarBtn";
 
 const ChatPage = () => {
   return (
@@ -22,9 +22,6 @@ const ChatPage = () => {
         </div>
         <div className="send-message">
           <input placeholder="..."></input>
-          <button type="submit" className="send">
-            🍻
-          </button>
         </div>
       </div>
     </div>

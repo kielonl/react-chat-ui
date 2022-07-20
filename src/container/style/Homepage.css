@@ -1,4 +1,4 @@
-/*.homepage {
+.homepage {
   text-align: center;
   position: relative;
   display: flex;
@@ -26,4 +26,7 @@ th {
 .home {
   color: yellow;
 }
-*/
+img {
+  max-height: 150px;
+  max-width: 150px;
+}
