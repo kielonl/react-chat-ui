@@ -1,4 +1,4 @@
-/*.message-block-my,
+.message-block-my,
 .message-block-not-my{
     max-width:fit-content;
     margin:10px;
@@ -14,6 +14,7 @@
 }
 .message-block-not-my{
     background-color:#96aac4;
+    color:black;
     text-align:right;
     min-width: fit-content;
     word-wrap: break-word;
@@ -21,4 +22,8 @@
     font-size:20px;
     align-self: flex-start;
 }
-*/
+
+.message-author{
+    color:white;
+    
+}

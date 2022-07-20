@@ -4,13 +4,10 @@ const Message = (props) => {
   return (
     <>
       <h1
-        class={
-          props.who === "sent"
-            ? "message-block message-block-my"
-            : "message-block message-block-not-my"
-        }
+        class={"message-block message-block-not-my"}
+        style={{ "background-color": props.color }}
       >
-        {props.content}
+        <div class={"message-author"}>{props.author}</div> : {props.content}
       </h1>
     </>
   );
