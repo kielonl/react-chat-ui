@@ -36,9 +36,10 @@
 }
 
 .bm-item-list {
+  flex-direction: column;
   color: white;
   display: flex;
-  flex-direction: column;
+  width: 20vw;
 }
 
 .bm-overlay {

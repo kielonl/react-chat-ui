@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import "../style/Homepage.css";
 const axios = require("axios");
@@ -5,13 +6,13 @@ const Homepage = (props) => {
   const ChanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
   const [maxusers, setUsers] = useState("");
-  const [name_Channnel, setname_Channel] = useState("");
+  const [name_Channel, setname_Channel] = useState("");
   const handleSubmit = async (e) => {
     axios
       .post(ChanelUrl, {
         uuid: props.user.uuid,
         maxUsers: maxusers,
-        channelName: name_Channnel,
+        channelName: name_Channel,
       })
       .then(function (response) {
         console.log(response);
@@ -19,6 +20,14 @@ const Homepage = (props) => {
       .catch(function (error) {
         console.log(error);
       });
+    render(
+      <div id="box-Channel" name="name_Channel">
+        <div id="server_mesage">Server mesage </div>
+        <div id="user_left">user1</div>
+        <div id="user_right">user2</div>
+        <div id="type_text">type</div>
+      </div>
+    );
   };
   const pulldata = async (e) => {
     const channelArray = [];
@@ -44,12 +53,13 @@ const Homepage = (props) => {
   return (
     <div className="abouttext">
       <h1>WebChat</h1>
+      <p>Nazwa kanału powinna mieć nie mniej niż 5 znaków</p>
       <div id="chanels">
         <input
           type={"text"}
           placeholder="Podaj nazwe kanału"
           name="Channel_name"
-          value={name_Channnel}
+          value={name_Channel}
           onChange={(e) => setname_Channel(e.target.value)}
           autoComplete="off"
         ></input>
