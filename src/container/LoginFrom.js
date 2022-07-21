@@ -8,7 +8,6 @@ const LoginFrom = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
-  const isError = false;
   const navigate = useNavigate();
   console.log(props);
   const handleSubmit = async (e) => {
