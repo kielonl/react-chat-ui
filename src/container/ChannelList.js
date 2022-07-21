@@ -5,17 +5,17 @@ const ChannelList = (props) => {
   const chanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
-  const [name_Channel, setname_Channel] = useState("");
+  const [channel, setChannel] = useState("");
   const handleSubmit = async (e) => {
-    if (!maxusers || !name_Channel || !name_Channel < 0) {
+    if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
       return;
     }
     axios
       .post(chanelUrl, {
         uuid: props.user.uuid,
-        maxUsers: maxusers,
-        channelName: name_Channel,
+        maxUsers: maxUsers,
+        channelName: channel,
       })
       .then(function (response) {
         pullData();
@@ -53,15 +53,15 @@ const ChannelList = (props) => {
           type={"text"}
           placeholder="Podaj nazwe kanału"
           name="Channel_name"
-          value={name_Channel}
-          onChange={(e) => setname_Channel(e.target.value)}
+          value={channel}
+          onChange={(e) => setChannel(e.target.value)}
           autoComplete="off"
         ></input>
         <input
           type={"number"}
           placeholder="ile użytkowników"
           name="Max_users"
-          value={maxusers}
+          value={maxUsers}
           onChange={(e) => setMaxUsers(e.target.value)}
           autoComplete="off"
         ></input>
