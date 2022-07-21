@@ -1,13 +1,16 @@
-import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import "./style/Homepage.css";
 const axios = require("axios");
 const Homepage = (props) => {
   const chanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
-  const [maxusers, setUsers] = useState("");
+  const [maxusers, setUsers] = useState(0);
   const [name_Channel, setname_Channel] = useState("");
   const handleSubmit = async (e) => {
+    if (!maxusers || !name_Channel || !name_Channel < 0) {
+      alert("Popraw error");
+      return;
+    }
     axios
       .post(chanelUrl, {
         uuid: props.user.uuid,
@@ -16,31 +19,22 @@ const Homepage = (props) => {
       })
       .then(function (response) {
         console.log(response);
+        pullData();
       })
       .catch(function (error) {
         console.log(error);
       });
-    render(
-      <div id="box-Channel" name="name_Channel">
-        <div id="server_mesage">Server mesage </div>
-        <div id="user_left">user1</div>
-        <div id="user_right">user2</div>
-        <div id="type_text">type</div>
-      </div>
-    );
   };
   const pullData = async (e) => {
     const channelArray = [];
     const channelsGET = await axios.get("http://localhost:8080/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get("http://localhost:8080/users" + ch.owner);
+      const result = await axios.get("http://localhost:8080/users/" + ch.owner);
 
       const channelObject = {
+        ...ch,
         username: result.data.username,
-        channelUuid: ch.channelUuid,
-        dataTime: ch.dataTime,
-        maxNumberOfMembers: ch.maxNumberOfMembers,
       };
       channelArray.push(channelObject);
     }
@@ -54,6 +48,7 @@ const Homepage = (props) => {
     <div className="abouttext">
       <h1>WebChat</h1>
       <p>Nazwa kanału powinna mieć nie mniej niż 5 znaków</p>
+      <p>Na kanale nie może być mniej niż 2 os</p>
       <div id="chanels">
         <input
           type={"text"}
@@ -71,33 +66,24 @@ const Homepage = (props) => {
           onChange={(e) => setUsers(e.target.value)}
           autoComplete="off"
         ></input>
+
         <button onClick={handleSubmit}>Create chanel</button>
-
-        <div id="listusers">
-          {data.map((data, index) => {
-            return (
-              <table className="liusername" key={index}>
+      </div>
+      <div id="listusers">
+        {data.map((data, index) => {
+          console.log(data);
+          return (
+            <table className="liusername" key={index}>
+              <tbody>
                 <tr>
-                  <td>{data.uuid}</td>
-
-                  <td>{data.dataTime}</td>
-
+                  <td>{data.channelName}</td>
                   <td>{data.maxNumberOfMembers}</td>
                 </tr>
-              </table>
-            );
-          })}
-        </div>
-        <div id="listchannels">
-          <table>
-            <tr>
-              <td>List channels.</td>
-            </tr>
-            <tr></tr>
-          </table>
-        </div>
+              </tbody>
+            </table>
+          );
+        })}
       </div>
-      <p></p>
     </div>
   );
 };

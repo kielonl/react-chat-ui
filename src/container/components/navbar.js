@@ -5,8 +5,8 @@ const Navbar = () => {
   return (
     <nav id="navbar" className="MainNavbar">
       <div className="navbarM">
-        <a href="http://localhost:3000/About">About</a>
-        <a href="http://localhost:3000/chanels">Channels</a>
+        <a href="/About">About</a>
+        <a href="/home">Channels</a>
       </div>
       <div className="navbarT">nazwa kanalu</div>
       <div className="navSpacer"></div>
