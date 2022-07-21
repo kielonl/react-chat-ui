@@ -4,7 +4,7 @@ const axios = require("axios");
 const ChannelList = (props) => {
   const chanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
-  const [maxusers, setUsers] = useState(0);
+  const [maxUsers, setMaxUsers] = useState(0);
   const [name_Channel, setname_Channel] = useState("");
   const handleSubmit = async (e) => {
     if (!maxusers || !name_Channel || !name_Channel < 0) {
@@ -18,7 +18,6 @@ const ChannelList = (props) => {
         channelName: name_Channel,
       })
       .then(function (response) {
-        console.log(response);
         pullData();
       })
       .catch(function (error) {
@@ -63,7 +62,7 @@ const ChannelList = (props) => {
           placeholder="ile użytkowników"
           name="Max_users"
           value={maxusers}
-          onChange={(e) => setUsers(e.target.value)}
+          onChange={(e) => setMaxUsers(e.target.value)}
           autoComplete="off"
         ></input>
 
@@ -71,7 +70,6 @@ const ChannelList = (props) => {
       </div>
       <div>
         {data.map((data, index) => {
-          console.log(data);
           return (
             <table className="liusername" key={index}>
               <tbody>

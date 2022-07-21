@@ -6,19 +6,19 @@ import Chatpage from "./container/Chat";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [user, setUser] = useState({});
-  const [channel, setchannel] = useState({});
+  const [channel, setChannel] = useState({});
   return (
     <Router>
       <Routes>
         <Route
           exact
           path="/"
-          element={<Login setUser={setUser} setName_Channel={setchannel} />}
+          element={<Login setUser={setUser} setChannel={setChannel} />}
         />
         <Route
           exact
           path="/Login"
-          element={<Login setUser={setUser} setName_Channel={setchannel} />}
+          element={<Login setUser={setUser} setChannel={setChannel} />}
         />
         <Route path="/about" element={<About />} />
         <Route path="/home" element={<ChannelList user={user} />} />
