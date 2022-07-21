@@ -1,8 +1,8 @@
 import { useState } from "react";
-import LoginFrom from "./container/chat/components/LoginFrom";
-import About from "./container/chat/components/About";
-import Homepage from "./container/chat/components/Homepage";
-import Chatpage from "./container/chat/components/Chat";
+import LoginFrom from "./container/LoginFrom";
+import About from "./container/About";
+import Homepage from "./container/Homepage";
+import Chatpage from "./container/Chat";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [user, setUser] = useState({});

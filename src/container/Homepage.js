@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
-import "../style/Homepage.css";
+import "./style/Homepage.css";
 const axios = require("axios");
 const Homepage = (props) => {
   const chanelUrl = "http://localhost:8080/channels";

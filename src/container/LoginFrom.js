@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../style/LoginFrom.css";
+import "./style/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
 const url = "http://localhost:8080/users";
 const LoginFrom = (props) => {
@@ -29,7 +29,7 @@ const LoginFrom = (props) => {
     <div id="fromlog">
       <div id="int">
         <h1 id="upertext">Enter the space</h1>
-        <p class="input_text_above">Username</p>
+        <p className="input_text_above">Username</p>
         <input
           type={"text"}
           name="user"
@@ -37,7 +37,7 @@ const LoginFrom = (props) => {
           autoComplete="off"
           onChange={(e) => setName(e.target.value)}
         />
-        <p class="input_text_above">Image URL</p>
+        <p className="input_text_above">Image URL</p>
         <input
           type={"text"}
           name="url"
@@ -45,7 +45,7 @@ const LoginFrom = (props) => {
           autoComplete="off"
           onChange={(e) => setUrl(e.target.value)}
         />
-        <p class="image-format-info">(jpg,jpeg,png)</p>
+        <p className="image-format-info">(jpg,jpeg,png)</p>
         <div id="button">
           <button className="loginButton" onClick={handleSumibt}>
             Submit

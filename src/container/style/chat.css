@@ -1,6 +1,4 @@
-
 .body{
-    display:flex;
     background-color: #282c34;
 }
 @media only screen and (max-width:680px){
@@ -18,11 +16,6 @@
 .send-message{
     width:80%;
 }
-nav{
-    width:80%;
-}
-
-
 .prof-pic{
     height:8%;
     width:8%;
@@ -45,23 +38,6 @@ nav{
 .send-message{
     width: 80%;
 }
-nav{
-    width: 100vw;
-}
-
-
-.channel-info-bar{
-    background-color: #164e63;
-    border-bottom:4px solid #64748b;
-    display:flex;
-    width:100%;
-    height:10vh;
-}
-.channel-info-name{
-    display:flex;
-    background-color: #164e63;
-}
-
 .chat-window{
     height:85vh;
     }
@@ -89,7 +65,7 @@ nav{
     letter-spacing: 1%;
 }
 .send-message .send{
-    background-color: #282c34;
+    background-color: #181b22;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -99,7 +75,14 @@ nav{
     cursor: pointer;
     font-size: 1.25rem;
 }
+.sendFile{
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 
+    font-size: 1.25rem;
+}
 .chat-window{
     display:grid;
     width:100%;
@@ -109,9 +92,6 @@ nav{
     width: 100%;
     display: flex;
 }
-
-
-
 .messages{
     height: 80vh;
     overflow-y: scroll;
@@ -119,4 +99,3 @@ nav{
     flex-direction: column;
     align-items: center;
 }
-
