@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./style/Homepage.css";
+import "./style/ChannelList.css";
 const axios = require("axios");
-const Homepage = (props) => {
+const ChannelList = (props) => {
   const chanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
   const [maxusers, setUsers] = useState(0);
@@ -76,7 +76,9 @@ const Homepage = (props) => {
             <table className="liusername" key={index}>
               <tbody>
                 <tr>
-                  <td>{data.channelName}</td>
+                  <td>
+                    <a href="/chat">{data.channelName}</a>
+                  </td>
                   <td>{data.maxNumberOfMembers}</td>
                 </tr>
               </tbody>
@@ -88,4 +90,4 @@ const Homepage = (props) => {
   );
 };
 
-export default Homepage;
+export default ChannelList;

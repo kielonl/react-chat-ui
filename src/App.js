@@ -1,7 +1,7 @@
 import { useState } from "react";
-import LoginFrom from "./container/LoginFrom";
+import Login from "./container/Login";
 import About from "./container/About";
-import Homepage from "./container/Homepage";
+import ChannelList from "./container/ChannelList";
 import Chatpage from "./container/Chat";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
@@ -14,18 +14,18 @@ function App() {
           exact
           path="/"
           element={
-            <LoginFrom setUser={setUser} setName_Channel={setname_Channel} />
+            <Login setUser={setUser} setName_Channel={setname_Channel} />
           }
         />
         <Route
           exact
           path="/Login"
           element={
-            <LoginFrom setUser={setUser} setName_Channel={setname_Channel} />
+            <Login setUser={setUser} setName_Channel={setname_Channel} />
           }
         />
         <Route path="/about" element={<About />} />
-        <Route path="/home" element={<Homepage user={user} />} />
+        <Route path="/home" element={<ChannelList user={user} />} />
         <Route path="/chat" element={<Chatpage />} />
       </Routes>
     </Router>
