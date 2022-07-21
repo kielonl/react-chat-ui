@@ -19,7 +19,7 @@ const LoginFrom = (props) => {
       .then(function (response) {
         console.log(response);
         props.setUser(response.data);
-        navigate("/home");
+        navigate("/chat"); //!!!!!!home
       })
       .catch(function (error) {
         console.log(error);

@@ -1,0 +1,15 @@
+import React from "react";
+import "../style/message.css";
+
+const Photo = (props) => {
+  console.log(props);
+  return (
+    <>
+      <h1 className="photo" style={{ backgroundColor: props.color }}>
+        <div className="message-author">{props.author}</div> :{" "}
+        <img src={props.content} alt="" />
+      </h1>
+    </>
+  );
+};
+export default Photo;

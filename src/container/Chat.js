@@ -3,13 +3,14 @@ import "./style/chat.css";
 import Navbar from "./components/navbar";
 import SideBar from "./components/sidebar";
 import Message from "./components/message";
+import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
 const ENDPOINT = "http://192.168.2.81:8001/";
 let socket = io(ENDPOINT);
 socket.on("chat message", console.log);
 
-const ChatPage = () => {
+const ChatPage = (props) => {
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);
@@ -21,10 +22,17 @@ const ChatPage = () => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
+      console.log({
+        type: "img",
+        value: reader.result,
+        user: props.user,
+      });
       socket.emit("chat message", {
         type: "img",
         value: reader.result,
+        user: props.user,
       });
+
       setMessage("");
     };
   };
@@ -34,6 +42,7 @@ const ChatPage = () => {
     socket.emit("chat message", {
       type: "msg",
       value: message,
+      user: props.user,
     });
     setMessage("");
   };
@@ -52,7 +61,10 @@ const ChatPage = () => {
       messages.current = [
         ...messages.current,
         {
-          message: { type: "notification", value: "user conected: " + socket },
+          message: {
+            type: "notification",
+            value: "joined chat",
+          },
         },
       ];
       setReceivedMessage(messages.current);
@@ -78,12 +90,15 @@ const ChatPage = () => {
   }, []);
 
   const listItems = receivedMessage.map((wiadomosc, i) => {
-    console.log(wiadomosc);
-
-    if (wiadomosc.message.type === "img")
+    if (wiadomosc.message.type === "img") {
       return (
-        <img src={wiadomosc.message.value} who={wiadomosc.type} alt="Red dot" />
+        <Photo
+          key={i}
+          content={wiadomosc.message.value}
+          author={wiadomosc.userNickname}
+        />
       );
+    }
     return (
       <Message
         key={i}
