@@ -69,16 +69,22 @@ const ChannelList = (props) => {
 
         <button onClick={handleSubmit}>Create chanel</button>
       </div>
-      <div id="listusers">
+      <div>
         {data.map((data, index) => {
           console.log(data);
           return (
             <table className="liusername" key={index}>
               <tbody>
                 <tr>
+                  <th>Channel_name</th>
+                  <th>Owner</th>
+                  <th>Max users</th>
+                </tr>
+                <tr>
                   <td>
                     <a href="/chat">{data.channelName}</a>
                   </td>
+                  <td>{data.username}</td>
                   <td>{data.maxNumberOfMembers}</td>
                 </tr>
               </tbody>
