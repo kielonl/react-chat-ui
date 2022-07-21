@@ -1,101 +1,100 @@
-.body{
-    background-color: #282c34;
+.body {
+  background-color: #282c34;
+  font-family: "Edu QLD Beginner", cursive;
 }
-@media only screen and (max-width:680px){
-    .chat-window{
-        max-width:none;
-    }
-    
+@media only screen and (max-width: 680px) {
+  .chat-window {
+    max-width: none;
+  }
 }
-.left-bar{
-    background: black;
+.left-bar {
+  background: black;
 }
-.right-bar{
-    width:80%;
+.right-bar {
+  width: 80%;
 }
-.send-message{
-    width:80%;
+.send-message {
+  width: 80%;
 }
-.prof-pic{
-    height:8%;
-    width:8%;
-    border-radius: 100%;
+.prof-pic {
+  height: 8%;
+  width: 8%;
+  border-radius: 100%;
 }
-.user-list{
-    display:flex;
-    flex-direction: row;
-    border-bottom:black 3em solid;
+.user-list {
+  display: flex;
+  flex-direction: row;
+  border-bottom: black 3em solid;
 }
-.user{
-    display:flex;
-    align-items: center;
+.user {
+  display: flex;
+  align-items: center;
 }
 
+.right-bar {
+  width: 100%;
+}
+.send-message {
+  width: 80%;
+}
+.chat-window {
+  height: 85vh;
+}
 
-.right-bar{
-    width:100%;
+.send-message {
+  width: 100%;
+  box-sizing: border-box;
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(24, 23, 23);
+  display: flex;
+  font-size: 1.5rem;
+  overflow-x: hidden;
 }
-.send-message{
-    width: 80%;
+.send-message input {
+  line-height: 1.5;
+  width: 99.2%;
+  font-size: 1.5rem;
+  background: rgb(58, 58, 58);
+  color: white;
+  outline: none;
+  border: none;
+  padding-bottom: -1px;
+  letter-spacing: 1%;
 }
-.chat-window{
-    height:85vh;
-    }
-
-.send-message{
-    width:100%;
-    box-sizing:border-box;
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-    background-color: rgb(24, 23, 23);
-    display: flex;
-    font-size: 1.5rem;
-    overflow-x:hidden;  
+.send-message .send {
+  background-color: #181b22;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.25rem;
 }
-.send-message input{
-    line-height: 1.5;
-    width: 99.2%;
-    font-size: 1.5rem;
-    background: rgb(58, 58, 58);
-    color: white;
-    outline: none;
-    border: none;
-    padding-bottom:-1px;
-    letter-spacing: 1%;
+.sendFile {
+  justify-content: left;
+  display: inline-block;
+  text-decoration: none;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 1.25rem;
 }
-.send-message .send{
-    background-color: #181b22;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 1.25rem;
-}
-.sendFile{
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-
-    font-size: 1.25rem;
-}
-.chat-window{
-    display:grid;
-    width:100%;
+.chat-window {
+  display: grid;
+  width: 100%;
 }
 
 .message-block {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
-.messages{
-    height: 80vh;
-    overflow-y: scroll;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+.messages {
+  height: 80vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
