@@ -1,0 +1,13 @@
+.error-box{
+    background-color:#ef4444;
+    color:black;
+    padding:5px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border:#525252 1px solid;
+    font-weight: bold;
+    font-size:1em
+}
+.error-false{
+    display:none;
+}
