@@ -3,17 +3,19 @@ import Login from "./container/Login";
 import About from "./container/About";
 import ChannelList from "./container/ChannelList";
 import Chatpage from "./container/Chat";
+import getCookie from "./container/components/getCookie";
+import setCookie from "./container/components/setCookie";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [user, setUser] = useState({});
   const [channel, setChannel] = useState({});
   useEffect(() => {
-    // wykonam sie kiedy aplikacja sie wczyta
+    setUser(JSON.parse(getCookie("user")));
   }, []);
 
   useEffect(() => {
-    // wykonam sie kiedy user albo channel sie zmienia
+    setCookie("user", JSON.stringify(user));
   }, [user, channel]);
   return (
     <Router>
@@ -21,11 +23,6 @@ function App() {
         <Route
           exact
           path="/"
-          element={<Login setUser={setUser} setChannel={setChannel} />}
-        />
-        <Route
-          exact
-          path="/Login"
           element={<Login setUser={setUser} setChannel={setChannel} />}
         />
         <Route path="/about" element={<About />} />

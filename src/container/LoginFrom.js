@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./style/Login.css";
+import "./style/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
-import ErrorBox from "./components/ErrorBox";
-import removeCookie from "./components/rmCookie";
-
 const url = "http://192.168.2.81:8080/users";
-const Login = (props) => {
+const LoginFrom = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
-  const [errorMessage, setErrorMessage] = useState({});
   const navigate = useNavigate();
-  const handleSubmit = async (e) => {
+  const handleSumibt = async (e) => {
     e.preventDefault();
     axios
       .post(url, {
@@ -19,16 +15,11 @@ const Login = (props) => {
         imageUrl: imageUrl,
       })
       .then(function (response) {
-        removeCookie("user");
         props.setUser(response.data);
-
-        navigate("/home");
+        navigate("/chat");
       })
       .catch(function (error) {
-        setErrorMessage({
-          value: error.response.data.errorMessage,
-          isError: true,
-        });
+        console.log(error);
       });
   };
   return (
@@ -53,13 +44,12 @@ const Login = (props) => {
         />
         <p className="image-format-info">(jpg,jpeg,png)</p>
         <div id="button">
-          <button className="loginButton" onClick={handleSubmit}>
+          <button className="loginButton" onClick={handleSumibt}>
             Submit
           </button>
         </div>
-        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
       </div>
     </div>
   );
 };
-export default Login;
+export default LoginFrom;

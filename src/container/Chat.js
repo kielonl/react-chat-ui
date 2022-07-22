@@ -9,11 +9,11 @@ import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import getCookie from "./components/getCookie";
 
-const ENDPOINT = "http://localhost:8001/";
+const ENDPOINT = "http://192.168.2.81:8001/";
 let socket = io(ENDPOINT);
 socket.on("chat message", console.log);
 
-const ChatPage = () => {
+const ChatPage = (props) => {
   const navigate = useNavigate();
   if (!getCookie("user")) navigate("/");
   const [receivedMessage, setReceivedMessage] = useState([]);
@@ -29,7 +29,7 @@ const ChatPage = () => {
       socket.emit("chat message", {
         type: "img",
         value: reader.result,
-        userInfo: getCookie("user"),
+        userInfo: props.user,
       });
       e.target.files = "";
       setMessage("");
