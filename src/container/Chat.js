@@ -15,7 +15,6 @@ socket.on("chat message", console.log);
 const ChatPage = () => {
   const navigate = useNavigate();
   if (!getCookie("user")) navigate("/");
-  //console.log(JSON.stringify(Buffer.from(getCookie, "base64").toString()));
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);
@@ -30,6 +29,7 @@ const ChatPage = () => {
       socket.emit("chat message", {
         type: "img",
         value: reader.result,
+        userInfo: getCookie("user"),
       });
       setMessage("");
     };
