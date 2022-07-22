@@ -5,8 +5,8 @@ const Photo = (props) => {
   console.log(props);
   return (
     <>
-      <h1 className="photo" style={{ backgroundColor: props.color }}>
-        <div className="message-author">{props.author}</div> :{" "}
+      <h1 style={{ backgroundColor: props.color }} className="photo">
+        <div className="message-author">{props.author}:</div>
         <img src={props.content} alt="" />
       </h1>
     </>

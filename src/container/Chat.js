@@ -18,21 +18,15 @@ const ChatPage = (props) => {
 
   const sendFile = (e) => {
     const [file] = e.target.files;
-
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
-      console.log({
-        type: "img",
-        value: reader.result,
-        user: props.user,
-      });
       socket.emit("chat message", {
         type: "img",
         value: reader.result,
         user: props.user,
       });
-
+      e.target.files = "";
       setMessage("");
     };
   };
@@ -44,6 +38,7 @@ const ChatPage = (props) => {
       value: message,
       user: props.user,
     });
+
     setMessage("");
   };
   useEffect(() => {
@@ -63,7 +58,7 @@ const ChatPage = (props) => {
         {
           message: {
             type: "notification",
-            value: "joined chat",
+            value: "user joined chat",
           },
         },
       ];
@@ -105,7 +100,7 @@ const ChatPage = (props) => {
         content={wiadomosc.message.value}
         author={wiadomosc.userNickname}
         color={wiadomosc.color}
-        who={wiadomosc.type}
+        who={wiadomosc.message.type}
       />
     );
   });
