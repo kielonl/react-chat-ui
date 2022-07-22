@@ -14,19 +14,20 @@
   align-items: center;
   color: yellow;
 }
-#users {
-  border: 5px solid rgb(37, 37, 34);
-}
-#table1 {
-  background-color: #c0c0c0;
-}
-th {
-  background-color: #c0c0c0;
-}
 .home {
   color: yellow;
 }
-img {
-  max-height: 150px;
-  max-width: 150px;
+.liusername {
+  border: 3px solid yellow;
+  background-color: #3f3f46;
+  width: 100%;
+}
+th {
+  width: 33%;
+}
+tr {
+  width: 33%;
+}
+td {
+  width: 33%;
 }

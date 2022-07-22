@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./style/LoginFrom.css";
+import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
 const url = "http://localhost:8080/users";
-const LoginFrom = (props) => {
+const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const navigate = useNavigate();
@@ -55,4 +55,4 @@ const LoginFrom = (props) => {
     </div>
   );
 };
-export default LoginFrom;
+export default Login;
