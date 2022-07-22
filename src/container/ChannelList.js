@@ -12,7 +12,7 @@ const ChannelList = (props) => {
       return;
     }
     axios
-      .post(API_URL, {
+      .post(API_URL + "channels", {
         uuid: props.user.uuid,
         maxUsers: maxUsers,
         channelName: channel,
@@ -26,10 +26,10 @@ const ChannelList = (props) => {
   };
   const pullData = async (e) => {
     const channelArray = [];
-    const channelsGET = await axios.get(API_URL + "/channels");
+    const channelsGET = await axios.get(API_URL + "channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get(API_URL + "/users/" + ch.owner);
+      const result = await axios.get(API_URL + "users/" + ch.owner);
 
       const channelObject = {
         ...ch,

@@ -3,7 +3,7 @@ import axios from "axios";
 import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../setup";
-const url = API_URL + "/users";
+const url = API_URL + "users";
 const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");

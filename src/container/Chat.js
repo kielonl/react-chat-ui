@@ -5,8 +5,8 @@ import SideBar from "./components/sidebar";
 import Message from "./components/message";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-import { SOCET_URL } from "../setup";
-const ENDPOINT = SOCET_URL;
+import { SOCKET_URL } from "../setup";
+const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
 socket.on("chat message", console.log);
 

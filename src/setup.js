@@ -1,2 +1,2 @@
-export const API_URL = "http://192.168.2.78:8080";
-export const SOCET_URL = "http://192.168.2.78:8001/";
+export const API_URL = "http://localhost:8080/";
+export const SOCKET_URL = "http://localhost:8001/";
