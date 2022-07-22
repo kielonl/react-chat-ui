@@ -8,14 +8,18 @@ import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import getCookie from "./components/getCookie";
+import removeCookie from "./components/rmCookie";
 
-const ENDPOINT = "http://192.168.2.81:8001/";
+const ENDPOINT = "http://192.168.2.104:8001/";
 let socket = io(ENDPOINT);
 socket.on("chat message", console.log);
 
 const ChatPage = (props) => {
   const navigate = useNavigate();
-  if (!getCookie("user")) navigate("/");
+  if (getCookie("user") === "{}") {
+    removeCookie("user");
+    navigate("/");
+  }
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);
@@ -29,9 +33,8 @@ const ChatPage = (props) => {
       socket.emit("chat message", {
         type: "img",
         value: reader.result,
-        userInfo: props.user,
+        userInfo: getCookie("user"),
       });
-      e.target.files = "";
       setMessage("");
     };
   };

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
-const url = "http://192.168.2.81:8080/users";
+import removeCookie from "./components/rmCookie";
+const url = "http://192.168.2.104:8080/users";
 const LoginFrom = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
@@ -15,6 +16,8 @@ const LoginFrom = (props) => {
         imageUrl: imageUrl,
       })
       .then(function (response) {
+        removeCookie("user");
+        setCookie("user", JSON.stringify(response.data));
         props.setUser(response.data);
         navigate("/chat");
       })
