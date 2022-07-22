@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
+import ErrorBox from "./components/ErrorBox";
+import removeCookie from "./components/rmCookie";
+import setCookie from "./components/setCookie";
+
 const url = "http://192.168.2.81:8080/users";
 const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
+  const [errorMessage, setErrorMessage] = useState({});
   const navigate = useNavigate();
-  console.log(props);
-  const handleSumibt = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     axios
       .post(url, {
@@ -16,11 +20,20 @@ const Login = (props) => {
         imageUrl: imageUrl,
       })
       .then(function (response) {
-        props.setUser(response.data);
+        removeCookie("user");
+        let obj = {
+          uuid: response.data.uuid,
+          username: response.data.username,
+          imageUrl: response.data.image,
+        };
+        setCookie("user", JSON.stringify(obj));
         navigate("/home");
       })
       .catch(function (error) {
-        console.log(error);
+        setErrorMessage({
+          value: error.response.data.errorMessage,
+          isError: true,
+        });
       });
   };
   return (
@@ -45,10 +58,11 @@ const Login = (props) => {
         />
         <p className="image-format-info">(jpg,jpeg,png)</p>
         <div id="button">
-          <button className="loginButton" onClick={handleSumibt}>
+          <button className="loginButton" onClick={handleSubmit}>
             Submit
           </button>
         </div>
+        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
       </div>
     </div>
   );

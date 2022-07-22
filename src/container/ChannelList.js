@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
+import getCookie from "./components/getCookie";
+
+const userInfo = JSON.parse(getCookie("user"));
 const axios = require("axios");
 const ChannelList = (props) => {
   const chanelUrl = "http://localhost:8080/channels";
@@ -13,7 +16,7 @@ const ChannelList = (props) => {
     }
     axios
       .post(chanelUrl, {
-        uuid: props.user.uuid,
+        uuid: userInfo.uuid,
         maxUsers: maxUsers,
         channelName: channel,
       })
@@ -26,7 +29,7 @@ const ChannelList = (props) => {
   };
   const pullData = async (e) => {
     const channelArray = [];
-    const channelsGET = await axios.get("http://localhost:8080/channels");
+    const channelsGET = await axios.get("http://192.168.56.1:8080/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
       const result = await axios.get("http://localhost:8080/users/" + ch.owner);

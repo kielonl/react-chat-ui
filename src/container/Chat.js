@@ -6,11 +6,16 @@ import Message from "./components/message";
 import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-const ENDPOINT = "http://192.168.2.81:8001/";
+import { useNavigate } from "react-router-dom";
+import getCookie from "./components/getCookie";
+
+const ENDPOINT = "http://localhost:8001/";
 let socket = io(ENDPOINT);
 socket.on("chat message", console.log);
 
-const ChatPage = (props) => {
+const ChatPage = () => {
+  const navigate = useNavigate();
+  if (!getCookie("user")) navigate("/");
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);
@@ -24,7 +29,7 @@ const ChatPage = (props) => {
       socket.emit("chat message", {
         type: "img",
         value: reader.result,
-        user: props.user,
+        userInfo: getCookie("user"),
       });
       e.target.files = "";
       setMessage("");
@@ -36,7 +41,7 @@ const ChatPage = (props) => {
     socket.emit("chat message", {
       type: "msg",
       value: message,
-      user: props.user,
+      userInfo: getCookie("user"),
     });
 
     setMessage("");
@@ -52,7 +57,6 @@ const ChatPage = (props) => {
     };
 
     const joinEvent = (socket) => {
-      console.log("user con " + socket);
       messages.current = [
         ...messages.current,
         {
@@ -65,7 +69,6 @@ const ChatPage = (props) => {
       setReceivedMessage(messages.current);
     };
     const leaveEvent = (socket) => {
-      console.log("user con " + socket);
       messages.current = [
         ...messages.current,
         { message: { type: "notification", value: "user disconected" } },
