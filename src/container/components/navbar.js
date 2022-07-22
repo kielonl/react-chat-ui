@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="navbarT">nazwa kanału</div>
       <div className="navSpacer"></div>
       <div className="navbarL">
-        <a id="logout" href="http://localhost:3000/Login">
+        <a id="logout" href="/Login">
           Logout
         </a>
       </div>

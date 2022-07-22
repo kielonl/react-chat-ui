@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
+import { API_URL } from "../setup";
 const axios = require("axios");
 const ChannelList = (props) => {
-  const chanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
@@ -12,7 +12,7 @@ const ChannelList = (props) => {
       return;
     }
     axios
-      .post(chanelUrl, {
+      .post(API_URL, {
         uuid: props.user.uuid,
         maxUsers: maxUsers,
         channelName: channel,
@@ -26,10 +26,10 @@ const ChannelList = (props) => {
   };
   const pullData = async (e) => {
     const channelArray = [];
-    const channelsGET = await axios.get("http://localhost:8080/channels");
+    const channelsGET = await axios.get(API_URL + "/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get("http://localhost:8080/users/" + ch.owner);
+      const result = await axios.get(API_URL + "/users/" + ch.owner);
 
       const channelObject = {
         ...ch,

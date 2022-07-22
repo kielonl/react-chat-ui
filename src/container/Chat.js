@@ -5,7 +5,8 @@ import SideBar from "./components/sidebar";
 import Message from "./components/message";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-const ENDPOINT = "http://192.168.2.78:8001/";
+import { SOCET_URL } from "../setup";
+const ENDPOINT = SOCET_URL;
 let socket = io(ENDPOINT);
 socket.on("chat message", console.log);
 

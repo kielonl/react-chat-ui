@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
-const url = "http://localhost:8080/users";
+import { API_URL } from "../setup";
+const url = API_URL + "/users";
 const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
