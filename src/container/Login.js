@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./style/LoginFrom.css";
+import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
 import ErrorBox from "./components/ErrorBox";
 import removeCookie from "./components/rmCookie";
@@ -8,7 +8,7 @@ import setCookie from "./components/setCookie";
 import getCookie from "./components/getCookie";
 
 const url = "http://localhost:8080/users";
-const LoginFrom = () => {
+const Login = () => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
@@ -74,4 +74,4 @@ const LoginFrom = () => {
     </div>
   );
 };
-export default LoginFrom;
+export default Login;

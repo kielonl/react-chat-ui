@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-import "./style/Homepage.css";
+import "./style/ChannelList.css";
 const axios = require("axios");
-const Homepage = (props) => {
-  const chanelUrl = "http://192.168.56.1:8080/channels";
+const ChannelList = (props) => {
+  const chanelUrl = "http://localhost:8080/channels";
   const [data, setDate] = useState([]);
-  const [maxusers, setUsers] = useState(0);
-  const [name_Channel, setname_Channel] = useState("");
+  const [maxUsers, setMaxUsers] = useState(0);
+  const [channel, setChannel] = useState("");
   const handleSubmit = async (e) => {
-    if (!maxusers || !name_Channel || !name_Channel < 0) {
+    if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
       return;
     }
     axios
       .post(chanelUrl, {
         uuid: props.user.uuid,
-        maxUsers: maxusers,
-        channelName: name_Channel,
+        maxUsers: maxUsers,
+        channelName: channel,
       })
       .then(function (response) {
-        console.log(response);
         pullData();
       })
       .catch(function (error) {
@@ -30,9 +29,7 @@ const Homepage = (props) => {
     const channelsGET = await axios.get("http://192.168.56.1:8080/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get(
-        "http://192.168.56.1:8080/users/" + ch.owner
-      );
+      const result = await axios.get("http://localhost:8080/users/" + ch.owner);
 
       const channelObject = {
         ...ch,
@@ -56,29 +53,36 @@ const Homepage = (props) => {
           type={"text"}
           placeholder="Podaj nazwe kanału"
           name="Channel_name"
-          value={name_Channel}
-          onChange={(e) => setname_Channel(e.target.value)}
+          value={channel}
+          onChange={(e) => setChannel(e.target.value)}
           autoComplete="off"
         ></input>
         <input
           type={"number"}
           placeholder="ile użytkowników"
           name="Max_users"
-          value={maxusers}
-          onChange={(e) => setUsers(e.target.value)}
+          value={maxUsers}
+          onChange={(e) => setMaxUsers(e.target.value)}
           autoComplete="off"
         ></input>
 
         <button onClick={handleSubmit}>Create chanel</button>
       </div>
-      <div id="listusers">
+      <div>
         {data.map((data, index) => {
-          console.log(data);
           return (
             <table className="liusername" key={index}>
               <tbody>
                 <tr>
-                  <td>{data.channelName}</td>
+                  <th>Channel_name</th>
+                  <th>Owner</th>
+                  <th>Max users</th>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="/chat">{data.channelName}</a>
+                  </td>
+                  <td>{data.username}</td>
                   <td>{data.maxNumberOfMembers}</td>
                 </tr>
               </tbody>
@@ -90,4 +94,4 @@ const Homepage = (props) => {
   );
 };
 
-export default Homepage;
+export default ChannelList;
