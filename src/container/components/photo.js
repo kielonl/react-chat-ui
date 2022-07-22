@@ -2,7 +2,6 @@ import React from "react";
 import "../style/message.css";
 
 const Photo = (props) => {
-  console.log(props);
   return (
     <>
       <h1 style={{ backgroundColor: props.color }} className="photo">

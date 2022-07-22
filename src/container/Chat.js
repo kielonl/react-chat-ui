@@ -84,23 +84,23 @@ const ChatPage = (props) => {
     };
   }, []);
 
-  const listItems = receivedMessage.map((wiadomosc, i) => {
-    if (wiadomosc.message.type === "img") {
+  const listItems = receivedMessage.map((msgContainer, i) => {
+    if (msgContainer.message.type === "img") {
       return (
         <Photo
           key={i}
-          content={wiadomosc.message.value}
-          author={wiadomosc.userNickname}
+          content={msgContainer.message.value}
+          author={msgContainer.userNickname}
         />
       );
     }
     return (
       <Message
         key={i}
-        content={wiadomosc.message.value}
-        author={wiadomosc.userNickname}
-        color={wiadomosc.color}
-        who={wiadomosc.message.type}
+        content={msgContainer.message.value}
+        author={msgContainer.userNickname}
+        color={msgContainer.color}
+        who={msgContainer.message.type}
       />
     );
   });

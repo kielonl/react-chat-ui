@@ -10,16 +10,14 @@ const Login = (props) => {
   console.log(props);
   const handleSumibt = async (e) => {
     e.preventDefault();
-    console.log(username, imageUrl);
     axios
       .post(url, {
         username: username,
         imageUrl: imageUrl,
       })
       .then(function (response) {
-        console.log(response);
         props.setUser(response.data);
-        navigate("/home"); //!!!!!!home
+        navigate("/home");
       })
       .catch(function (error) {
         console.log(error);
