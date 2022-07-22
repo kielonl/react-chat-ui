@@ -3,13 +3,16 @@ import axios from "axios";
 import "./style/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
 import ErrorBox from "./components/ErrorBox";
+import removeCookie from "./components/rmCookie";
+import setCookie from "./components/setCookie";
+import getCookie from "./components/getCookie";
+
 const url = "http://localhost:8080/users";
-const LoginFrom = (props) => {
+const LoginFrom = () => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
   const navigate = useNavigate();
-  console.log(props);
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(username, imageUrl);
@@ -19,12 +22,21 @@ const LoginFrom = (props) => {
         imageUrl: imageUrl,
       })
       .then(function (response) {
-        console.log(response);
-        props.setUser(response.data);
-        navigate("/home");
+        console.log(response.data);
+        removeCookie("user");
+        let obj = {
+          uuid: response.data.uuid,
+          username: response.data.username,
+          imageUrl: response.data.image,
+        };
+        obj = JSON.stringify(obj);
+        setCookie("user", btoa(obj));
+        getCookie("user");
+        navigate("/chat");
       })
       .catch(function (error) {
-        console.log(error.response.data.errorMessage);
+        console.log(error.response.data);
+        console.log("cos");
         setErrorMessage({
           value: error.response.data.errorMessage,
           isError: true,
