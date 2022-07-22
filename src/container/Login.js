@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./style/LoginFrom.css";
+import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
 const url = "http://192.168.2.81:8080/users";
-const LoginFrom = (props) => {
+const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const LoginFrom = (props) => {
       .then(function (response) {
         console.log(response);
         props.setUser(response.data);
-        navigate("/chat"); //!!!!!!home
+        navigate("/home"); //!!!!!!home
       })
       .catch(function (error) {
         console.log(error);
@@ -55,4 +55,4 @@ const LoginFrom = (props) => {
     </div>
   );
 };
-export default LoginFrom;
+export default Login;
