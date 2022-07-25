@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./style/chat.css";
 import Navbar from "./components/navbar";
 import SideBar from "./components/sidebar";
@@ -6,10 +7,17 @@ import Message from "./components/message";
 import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
+import getCookie from "./components/getCookie";
+import removeCookie from "./components/rmCookie";
 const ENDPOINT = "http://192.168.56.1:8001/";
 let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
+  const navigate = useNavigate();
+  if (getCookie("user") === "{}" || !getCookie("user")) {
+    removeCookie("user");
+    navigate("/");
+  }
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);

@@ -2,16 +2,22 @@ import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
 import { useNavigate } from "react-router-dom";
 import setCookie from "./components/setCookie";
+import getCookie from "./components/getCookie";
+import removeCookie from "./components/rmCookie";
 import ErrorBox from "./components/ErrorBox";
 
 const axios = require("axios");
 const ChannelList = (props) => {
+  const navigate = useNavigate();
+  if (getCookie("user") === "{}" || !getCookie("user")) {
+    removeCookie("user");
+    navigate("/");
+  }
   const chanelUrl = "http://192.168.56.1:8080/channels";
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
-  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
