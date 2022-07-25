@@ -14,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(url);
     axios
       .post(url, {
         username: username,
@@ -31,7 +30,6 @@ const Login = () => {
         navigate("/home");
       })
       .catch(function (error) {
-        console.log(error);
         setErrorMessage({
           value: error.response.data.errorMessage,
           isError: true,

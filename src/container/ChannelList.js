@@ -12,7 +12,6 @@ const ChannelList = (props) => {
       alert("Popraw error");
       return;
     }
-    console.log(send);
     axios
       .post(send, {
         uuid: props.user.uuid,
@@ -25,7 +24,6 @@ const ChannelList = (props) => {
       .catch(function (error) {
         console.log(error);
       });
-    console.log(LAST_API_URL);
   };
   const pullData = async (e) => {
     const channelArray = [];
