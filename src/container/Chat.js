@@ -6,17 +6,10 @@ import Message from "./components/message";
 import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-import { useNavigate } from "react-router-dom";
 const ENDPOINT = "http://192.168.56.1:8001/";
 let socket = io(ENDPOINT);
-socket.on("chat message", console.log);
 
 const ChatPage = (props) => {
-  console.log(props.channel);
-  // if (getCookie("user") === "{}") {
-  //   removeCookie("user");
-  //   navigate("/");
-  // }
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);
