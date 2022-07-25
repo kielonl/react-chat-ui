@@ -9,7 +9,8 @@ import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
 import getCookie from "./components/getCookie";
 import removeCookie from "./components/rmCookie";
-const ENDPOINT = "http://192.168.56.1:8001/";
+import { SOCKET_URL } from "../setup";
+const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
