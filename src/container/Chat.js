@@ -7,7 +7,6 @@ import Message from "./components/message";
 import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-import getCookie from "./components/getCookie";
 import removeCookie from "./components/rmCookie";
 import { SOCKET_URL } from "../setup";
 const ENDPOINT = SOCKET_URL;
@@ -15,7 +14,7 @@ let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
   const navigate = useNavigate();
-  if (getCookie("user") === "{}" || !getCookie("user")) {
+  if (props.user === "{}" || !props.user) {
     removeCookie("user");
     navigate("/");
   }
