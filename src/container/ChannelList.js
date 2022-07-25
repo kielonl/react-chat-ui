@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
-import { API_URL } from "../setup";
+import { LAST_API_URL } from "../setup";
 const axios = require("axios");
 const ChannelList = (props) => {
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
+  const send = LAST_API_URL + "channels";
   const handleSubmit = async (e) => {
     if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
       return;
     }
+    console.log(send);
     axios
-      .post(API_URL + "channels", {
+      .post(send, {
         uuid: props.user.uuid,
         maxUsers: maxUsers,
         channelName: channel,
@@ -23,13 +25,14 @@ const ChannelList = (props) => {
       .catch(function (error) {
         console.log(error);
       });
+    console.log(LAST_API_URL);
   };
   const pullData = async (e) => {
     const channelArray = [];
-    const channelsGET = await axios.get(API_URL + "channels");
+    const channelsGET = await axios.get(LAST_API_URL + "channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get(API_URL + "users/" + ch.owner);
+      const result = await axios.get(LAST_API_URL + "users/" + ch.owner);
 
       const channelObject = {
         ...ch,

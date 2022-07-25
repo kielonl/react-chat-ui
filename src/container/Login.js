@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import ErrorBox from "./components/ErrorBox";
 import removeCookie from "./components/rmCookie";
 import setCookie from "./components/setCookie";
-import { API_URL } from "../setup";
-const url = API_URL + "users";
+import { LAST_API_URL } from "../setup";
+const url = LAST_API_URL + "/users";
 const Login = () => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
@@ -14,6 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(url);
     axios
       .post(url, {
         username: username,
@@ -27,9 +28,10 @@ const Login = () => {
           imageUrl: response.data.image,
         };
         setCookie("user", JSON.stringify(obj));
-        navigate("/chat");
+        navigate("/home");
       })
       .catch(function (error) {
+        console.log(error);
         setErrorMessage({
           value: error.response.data.errorMessage,
           isError: true,
