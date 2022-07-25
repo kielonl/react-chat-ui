@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
+import { useNavigate } from "react-router-dom";
+import setCookie from "./components/setCookie";
+
 const axios = require("axios");
 const ChannelList = (props) => {
-  const chanelUrl = "http://localhost:8080/channels";
+  const chanelUrl = "http://192.168.56.1:8080/channels";
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
@@ -29,7 +34,9 @@ const ChannelList = (props) => {
     const channelsGET = await axios.get("http://192.168.56.1:8080/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get("http://localhost:8080/users/" + ch.owner);
+      const result = await axios.get(
+        "http://192.168.56.1:8080/users/" + ch.owner
+      );
 
       const channelObject = {
         ...ch,
@@ -80,7 +87,16 @@ const ChannelList = (props) => {
                 </tr>
                 <tr>
                   <td>
-                    <a href="/chat">{data.channelName}</a>
+                    <div>JOIN</div>
+                    <div
+                      onClick={(e) => {
+                        setCookie("channel", e.target.innerText);
+                        props.setChannel(e.target.innerText);
+                        navigate("/chat");
+                      }}
+                    >
+                      {data.channelName}
+                    </div>
                   </td>
                   <td>{data.username}</td>
                   <td>{data.maxNumberOfMembers}</td>

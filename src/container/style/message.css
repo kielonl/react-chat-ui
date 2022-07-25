@@ -31,3 +31,13 @@
     color: #a4a4a4;
     align-self: center;
 }
+.photo{
+    background-color:#96aac4;
+    text-align:right;
+    min-width: fit-content;
+    word-wrap: break-word;
+    margin-left: 10px;
+    padding:10px;
+    font-size:20px;
+    align-self: flex-start;
+}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-const userURL = "http://localhost:8080/users";
+const userURL = " http://192.168.56.1:8080/users";
 const Users = () => {
   const [data, setDate] = useState([]);
   useEffect(() => {

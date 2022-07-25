@@ -3,18 +3,13 @@ import "./style/chat.css";
 import Navbar from "./components/navbar";
 import SideBar from "./components/sidebar";
 import Message from "./components/message";
+import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-import { useNavigate } from "react-router-dom";
-import getCookie from "./components/getCookie";
-
-const ENDPOINT = "http://localhost:8001/";
+const ENDPOINT = "http://192.168.56.1:8001/";
 let socket = io(ENDPOINT);
-socket.on("chat message", console.log);
 
-const ChatPage = () => {
-  const navigate = useNavigate();
-  if (!getCookie("user")) navigate("/");
+const ChatPage = (props) => {
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);
@@ -22,14 +17,13 @@ const ChatPage = () => {
 
   const sendFile = (e) => {
     const [file] = e.target.files;
-
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
       socket.emit("chat message", {
         type: "img",
         value: reader.result,
-        userInfo: getCookie("user"),
+        userInfo: props.user,
       });
       setMessage("");
     };
@@ -40,8 +34,9 @@ const ChatPage = () => {
     socket.emit("chat message", {
       type: "msg",
       value: message,
-      userInfo: getCookie("user"),
+      userInfo: props.user,
     });
+
     setMessage("");
   };
   useEffect(() => {
@@ -55,17 +50,18 @@ const ChatPage = () => {
     };
 
     const joinEvent = (socket) => {
-      console.log("user con " + socket);
       messages.current = [
         ...messages.current,
         {
-          message: { type: "notification", value: "user conected: " + socket },
+          message: {
+            type: "notification",
+            value: "user joined chat",
+          },
         },
       ];
       setReceivedMessage(messages.current);
     };
     const leaveEvent = (socket) => {
-      console.log("user con " + socket);
       messages.current = [
         ...messages.current,
         { message: { type: "notification", value: "user disconected" } },
@@ -84,20 +80,23 @@ const ChatPage = () => {
     };
   }, []);
 
-  const listItems = receivedMessage.map((wiadomosc, i) => {
-    console.log(wiadomosc);
-
-    if (wiadomosc.message.type === "img")
+  const listItems = receivedMessage.map((msgContainer, i) => {
+    if (msgContainer.message.type === "img") {
       return (
-        <img src={wiadomosc.message.value} who={wiadomosc.type} alt="Red dot" />
+        <Photo
+          key={i}
+          content={msgContainer.message.value}
+          author={msgContainer.userNickname}
+        />
       );
+    }
     return (
       <Message
         key={i}
-        content={wiadomosc.message.value}
-        author={wiadomosc.userNickname}
-        color={wiadomosc.color}
-        who={wiadomosc.type}
+        content={msgContainer.message.value}
+        author={msgContainer.userNickname}
+        color={msgContainer.color}
+        who={msgContainer.message.type}
       />
     );
   });
