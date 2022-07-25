@@ -6,7 +6,7 @@ import ErrorBox from "./components/ErrorBox";
 import removeCookie from "./components/rmCookie";
 import setCookie from "./components/setCookie";
 
-const url = "http://192.168.2.104:8080/users";
+const url = "http://192.168.56.1:8080/users";
 const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");

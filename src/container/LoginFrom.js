@@ -3,7 +3,7 @@ import axios from "axios";
 import "./style/LoginFrom.css";
 import { useNavigate } from "react-router-dom";
 import removeCookie from "./components/rmCookie";
-const url = "http://192.168.2.104:8080/users";
+const url = "http://192.168.56.1:8080/users";
 const LoginFrom = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
