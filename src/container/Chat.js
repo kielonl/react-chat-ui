@@ -6,7 +6,8 @@ import Message from "./components/message";
 import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-const ENDPOINT = "http://192.168.56.1:8001/";
+import { SOCKET_URL } from "../setup";
+const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
