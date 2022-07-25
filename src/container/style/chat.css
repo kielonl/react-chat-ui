@@ -1,6 +1,6 @@
 .body {
   background-color: #282c34;
-  font-family: "Edu QLD Beginner", cursive;
+    font-family: 'Roboto';
 }
 @media only screen and (max-width: 680px) {
   .chat-window {

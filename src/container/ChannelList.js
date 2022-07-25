@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
 import { LAST_API_URL } from "../setup";
+import { useNavigate } from "react-router-dom";
+import setCookie from "./components/setCookie";
+
 const axios = require("axios");
 const ChannelList = (props) => {
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
-  const send = LAST_API_URL + "channels";
+  const navigate = useNavigate();
+  const send = LAST_API_URL + "/channels";
   const handleSubmit = async (e) => {
     if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
@@ -27,10 +31,10 @@ const ChannelList = (props) => {
   };
   const pullData = async (e) => {
     const channelArray = [];
-    const channelsGET = await axios.get(LAST_API_URL + "channels");
+    const channelsGET = await axios.get(LAST_API_URL + "/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get(LAST_API_URL + "users/" + ch.owner);
+      const result = await axios.get(LAST_API_URL + "/users/" + ch.owner);
 
       const channelObject = {
         ...ch,
@@ -81,7 +85,16 @@ const ChannelList = (props) => {
                 </tr>
                 <tr>
                   <td>
-                    <a href="/chat">{data.channelName}</a>
+                    <div>JOIN</div>
+                    <div
+                      onClick={(e) => {
+                        setCookie("channel", e.target.innerText);
+                        props.setChannel(e.target.innerText);
+                        navigate("/chat");
+                      }}
+                    >
+                      {data.channelName}
+                    </div>
                   </td>
                   <td>{data.username}</td>
                   <td>{data.maxNumberOfMembers}</td>
