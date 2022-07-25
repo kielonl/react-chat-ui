@@ -24,6 +24,10 @@ const Login = (props) => {
         setCookie("user", JSON.stringify(response.data));
         props.setUser(response.data);
         navigate("/home");
+        setErrorMessage({
+          value: "",
+          isError: false,
+        });
       })
       .catch(function (error) {
         setErrorMessage({

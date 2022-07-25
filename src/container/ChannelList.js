@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
 import { useNavigate } from "react-router-dom";
 import setCookie from "./components/setCookie";
+import ErrorBox from "./components/ErrorBox";
 
 const axios = require("axios");
 const ChannelList = (props) => {
@@ -9,8 +10,8 @@ const ChannelList = (props) => {
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
+  const [errorMessage, setErrorMessage] = useState({});
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
@@ -24,9 +25,16 @@ const ChannelList = (props) => {
       })
       .then(function (response) {
         pullData();
+        setErrorMessage({
+          value: "",
+          isError: false,
+        });
       })
       .catch(function (error) {
-        console.log(error);
+        setErrorMessage({
+          value: error.response.data.errorMessage,
+          isError: true,
+        });
       });
   };
   const pullData = async (e) => {
@@ -105,6 +113,7 @@ const ChannelList = (props) => {
             </table>
           );
         })}
+        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
       </div>
     </div>
   );
