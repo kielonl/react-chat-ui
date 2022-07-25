@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const axios = require("axios");
 const ChannelList = (props) => {
-  const chanelUrl = " http://192.168.2.104:8080/channels";
+  const chanelUrl = " http://localhost:8080/channels";
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
@@ -30,12 +29,10 @@ const ChannelList = (props) => {
   };
   const pullData = async (e) => {
     const channelArray = [];
-    const channelsGET = await axios.get("http://192.168.2.104:8080/channels");
+    const channelsGET = await axios.get("http://localhost:8080/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get(
-        "http://192.168.2.104:8080/users/" + ch.owner
-      );
+      const result = await axios.get("http://localhost:8080/users/" + ch.owner);
 
       const channelObject = {
         ...ch,
@@ -89,6 +86,7 @@ const ChannelList = (props) => {
                     <div>JOIN</div>
                     <a
                       onClick={() => {
+                        props.setChannelInfo(data.channelName);
                         navigate("/chat");
                       }}
                     >
@@ -106,5 +104,4 @@ const ChannelList = (props) => {
     </div>
   );
 };
-
 export default ChannelList;

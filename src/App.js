@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [user, setUser] = useState("");
   const [channel, setChannel] = useState({});
+  const [channelInfo, setChannelInfo] = useState("hehePL");
+  console.log(channelInfo);
 
   return (
     <Router>
@@ -18,8 +20,14 @@ function App() {
           element={<Login setUser={setUser} setChannel={setChannel} />}
         />
         <Route path="/about" element={<About />} />
-        <Route path="/home" element={<ChannelList user={user} />} />
-        <Route path="/chat" element={<Chatpage user={user} />} />
+        <Route
+          path="/home"
+          element={<ChannelList setChannelInfo={setChannelInfo} user={user} />}
+        />
+        <Route
+          path="/chat"
+          element={<Chatpage channelInfo={channelInfo} user={user} />}
+        />
       </Routes>
     </Router>
   );
