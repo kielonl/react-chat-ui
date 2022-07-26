@@ -35,11 +35,11 @@ const Login = (props) => {
       });
   };
   return (
-    <div className="bg">
-      <div id="fromlog">
-        <div id="int">
-          <h1 id="upertext">Enter the space</h1>
-          <p className="input_text_above">Username</p>
+    <div className="Login-body">
+      <div className="login-text">
+        <div className="login-inputs">
+          <h1 className="text-color">Enter the space</h1>
+          <p className="text-color">Username</p>
           <input
             type={"text"}
             name="user"
@@ -48,7 +48,7 @@ const Login = (props) => {
             autoComplete="off"
             onChange={(e) => setName(e.target.value)}
           />
-          <p className="input_text_above">Image URL</p>
+          <p className="text-color">Image URL</p>
           <input
             type={"text"}
             name="url"
@@ -58,13 +58,11 @@ const Login = (props) => {
             onChange={(e) => setUrl(e.target.value)}
           />
           <p className="image-format-info">(jpg,jpeg,png)</p>
-          <div id="button">
-            <button className="loginButton" onClick={handleSubmit}>
-              Submit
-            </button>
-          </div>
-          <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
+          <button className="loginButton" onClick={handleSubmit}>
+            Submit
+          </button>
         </div>
+        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
       </div>
     </div>
   );

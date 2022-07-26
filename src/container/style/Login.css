@@ -1,21 +1,22 @@
-#upertext {
-  font-weight: bold;
-  color: greenyellow;
+.Login-body {
+  background-color: #1c1917;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .input-text-above {
   float: left;
   font-weight: bold;
 }
-#fromlog {
+.login-text {
   justify-content: center;
   flex-direction: column;
   align-items: center;
   text-align: center;
   display: flex;
 }
-#int {
+.login-inputs {
   color: white;
-  background-color: #1c1917;
+
   height: max-content;
   width: 22.4rem;
   position: absolute;
@@ -64,4 +65,7 @@ loginButton:hover {
 
 .input_text_above {
   color: #fde047;
+}
+.text-color {
+  color: #a3e635;
 }
