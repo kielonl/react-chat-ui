@@ -73,39 +73,50 @@ const ChannelList = (props) => {
 
         <button onClick={handleSubmit}>Create chanel</button>
       </div>
-      <div>
-        {data.map((data, index) => {
-          return (
-            <table className="liusername" key={index}>
-              <tbody>
-                <tr>
-                  <th>Channel_name</th>
-                  <th>Owner</th>
-                  <th>Max users</th>
-                </tr>
+      <div class="list">
+        <div class="listbody">
+          {data.map((data, index) => {
+            return (
+              <table key={index}>
                 <tr>
                   <td>
-                    <div>JOIN</div>
-                    <div
-                      onClick={(e) => {
-                        setCookie("channel", e.target.innerText);
-                        props.setChannel(e.target.innerText);
-                        navigate("/chat");
-                      }}
-                    >
-                      {data.channelName}
+                    <div class="chanelname">{data.channelName}</div>
+                  </td>
+                  <td>
+                    <div class="ower">{data.owner}</div>
+                  </td>
+                  <td>
+                    <div class="jonbutton">
+                      <button class="jon">JOIN</button>
                     </div>
                   </td>
-                  <td>{data.username}</td>
-                  <td>{data.maxNumberOfMembers}</td>
                 </tr>
-              </tbody>
-            </table>
-          );
-        })}
+              </table>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
 };
 
 export default ChannelList;
+/*
+ <div class="list" key="{index}">
+      <div class="listbody">
+        <table>
+          <tr>
+            <td>
+              <div class="chanelname">{data.channelName}</div>
+            </td>
+            <td>
+              <div class="ower">{data.owner}</div>
+            </td>
+            <td>
+              <div class="jonbutton"><button class="jon">JOIN</button></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+*/
