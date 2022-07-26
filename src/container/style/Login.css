@@ -34,7 +34,7 @@ body {
   box-shadow: 0 0 150px rgb(0, 136, 255);
   padding: 50px 35px;
 }
-#int input {
+#int .text-input{
   display: block;
   height: 50px;
   width: 100%;
@@ -47,6 +47,7 @@ body {
   outline: none;
   color: #5eead4;
 }
+
 .loginButton {
   margin-top: 50px;
   width: 100%;
@@ -59,7 +60,24 @@ body {
   cursor: pointer;
   border: none;
 }
-loginButton:hover {
+.login-select-image{
+  margin-top:1em;
+  display:flex;
+  background-color:white;
+  color:black;
+  width:6em;
+  padding:6px;
+  letter-spacing: 1px;
+  border-radius:2px;
+}
+.login-select-image:hover{
+  background-color:#e7e5e4
+
+}
+.hidden{
+  display:hidden
+}
+.loginButton:hover {
   background-color: #a1a1aa;
 }
 .image-format-info {

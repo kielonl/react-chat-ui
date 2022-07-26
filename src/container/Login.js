@@ -9,6 +9,8 @@ const url = LAST_API_URL + "/users";
 const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
+  const [image, setImage] = useState("");
+
   const [errorMessage, setErrorMessage] = useState({});
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -16,7 +18,7 @@ const Login = (props) => {
     axios
       .post(url, {
         username: username,
-        imageUrl: imageUrl,
+        imageUrl: image || imageUrl,
       })
       .then(function (response) {
         removeCookie("user");
@@ -34,6 +36,16 @@ const Login = (props) => {
         });
       });
   };
+  const selectImage = (e) => {
+    const [file] = e.target.files;
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      console.log(reader.result);
+      setImage(reader.result);
+    };
+    setImage("");
+  };
   return (
     <div id="fromlog">
       <div id="int">
@@ -44,6 +56,7 @@ const Login = (props) => {
           name="user"
           value={username}
           autoComplete="off"
+          className="text-input"
           onChange={(e) => setName(e.target.value)}
         />
         <p className="input_text_above">Image URL</p>
@@ -52,9 +65,19 @@ const Login = (props) => {
           name="url"
           value={imageUrl}
           autoComplete="off"
+          className="text-input"
           onChange={(e) => setUrl(e.target.value)}
         />
-        <p className="image-format-info">(jpg,jpeg,png)</p>
+        <input
+          type="file"
+          id="files"
+          onChange={selectImage}
+          className="hidden"
+        />
+        <label for="files" className="login-select-image">
+          Select Image
+        </label>
+        {/* <p className="image-format-info">(jpg,jpeg,png)</p> */}
         <div id="button">
           <button className="loginButton" onClick={handleSubmit}>
             Submit
