@@ -1,18 +1,8 @@
-.message-block-my,
 .message-block-not-my{
     max-width: fit-content;
     margin:10px;
 }
 
-.message-block-my{
-    margin-bottom:20px;
-    padding:20px;
-    font-size:20px;
-    min-width: fit-content;
-    word-wrap: break-word;
-    align-self: flex-end;
-    background-color: aquamarine;
-}
 .message-block-not-my{
     background-color:#96aac4;
     text-align:right;
@@ -21,6 +11,8 @@
     padding:20px;
     font-size:20px;
     align-self: flex-start;
+    display:flex;
+    align-items: center;
 }
 .message-block-notification{
     text-align:center;
@@ -31,13 +23,23 @@
     color: #a4a4a4;
     align-self: center;
 }
+.message-block-notification img{
+    display:none
+}
 .photo{
     background-color:#96aac4;
-    text-align:right;
+    text-align:left;
     min-width: fit-content;
     word-wrap: break-word;
     margin-left: 10px;
     padding:10px;
     font-size:20px;
     align-self: flex-start;
+}
+.pfp{
+    margin-right:10px;
+    height:50px;
+    width:50px;
+    border-radius: 100%;
+    border:1px solid white;
 }

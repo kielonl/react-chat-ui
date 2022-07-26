@@ -12,6 +12,7 @@ const Message = (props) => {
         }
         style={{ backgroundColor: props.color }}
       >
+        <img src={props.image} className="pfp" alt="profile-pic" />
         <div className={"message-author"}>{props.author}</div> : {props.content}
       </h1>
     </>
