@@ -2,15 +2,22 @@ import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
 import { LAST_API_URL } from "../setup";
 import { useNavigate } from "react-router-dom";
-import setCookie from "./components/setCookie";
+import removeCookie from "./components/rmCookie";
+import ErrorBox from "./components/ErrorBox";
 
 const axios = require("axios");
 const ChannelList = (props) => {
+  const navigate = useNavigate();
+  if (props.user === "{}" || !props.user) {
+    removeCookie("user");
+    navigate("/");
+  }
+  const send = LAST_API_URL + "/channels";
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
-  const navigate = useNavigate();
-  const send = LAST_API_URL + "/channels";
+  const [errorMessage, setErrorMessage] = useState({});
+
   const handleSubmit = async (e) => {
     if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
@@ -24,9 +31,16 @@ const ChannelList = (props) => {
       })
       .then(function (response) {
         pullData();
+        setErrorMessage({
+          value: "",
+          isError: false,
+        });
       })
       .catch(function (error) {
-        console.log(error);
+        setErrorMessage({
+          value: error.response.data.errorMessage,
+          isError: true,
+        });
       });
   };
   const pullData = async (e) => {
@@ -73,50 +87,39 @@ const ChannelList = (props) => {
 
         <button onClick={handleSubmit}>Create chanel</button>
       </div>
-      <div class="list">
-        <div class="listbody">
-          {data.map((data, index) => {
-            return (
-              <table key={index}>
+      <div>
+        {data.map((data, index) => {
+          return (
+            <table className="liusername" key={index}>
+              <tbody>
+                <tr>
+                  <th>Channel_name</th>
+                  <th>Owner</th>
+                  <th>Max users</th>
+                </tr>
                 <tr>
                   <td>
-                    <div class="chanelname">{data.channelName}</div>
-                  </td>
-                  <td>
-                    <div class="ower">{data.owner}</div>
-                  </td>
-                  <td>
-                    <div class="jonbutton">
-                      <button class="jon">JOIN</button>
+                    <div>JOIN</div>
+                    <div
+                      onClick={(e) => {
+                        props.setChannel(e.target.innerText);
+                        navigate("/chat");
+                      }}
+                    >
+                      {data.channelName}
                     </div>
                   </td>
+                  <td>{data.username}</td>
+                  <td>{data.maxNumberOfMembers}</td>
                 </tr>
-              </table>
-            );
-          })}
-        </div>
+              </tbody>
+            </table>
+          );
+        })}
+        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
       </div>
     </div>
   );
 };
 
 export default ChannelList;
-/*
- <div class="list" key="{index}">
-      <div class="listbody">
-        <table>
-          <tr>
-            <td>
-              <div class="chanelname">{data.channelName}</div>
-            </td>
-            <td>
-              <div class="ower">{data.owner}</div>
-            </td>
-            <td>
-              <div class="jonbutton"><button class="jon">JOIN</button></div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-*/
