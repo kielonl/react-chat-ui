@@ -21,7 +21,6 @@ const Login = (props) => {
       })
       .then(function (response) {
         removeCookie("user");
-        console.log(response.data);
         setCookie("user", JSON.stringify(response.data));
         props.setUser(response.data);
         navigate("/home");

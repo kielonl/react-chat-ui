@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
 import { useNavigate } from "react-router-dom";
+import setCookie from "./components/setCookie";
+import socket from "socket.io-client";
 
 const axios = require("axios");
 const ChannelList = (props) => {
@@ -84,14 +86,16 @@ const ChannelList = (props) => {
                 <tr>
                   <td>
                     <div>JOIN</div>
-                    <a
-                      onClick={() => {
-                        props.setChannelInfo(data.channelName);
+                    <div
+                      onClick={(e) => {
+                        setCookie("channel", e.target.innerText);
+
+                        props.setChannel(e.target.innerText);
                         navigate("/chat");
                       }}
                     >
                       {data.channelName}
-                    </a>
+                    </div>
                   </td>
                   <td>{data.username}</td>
                   <td>{data.maxNumberOfMembers}</td>

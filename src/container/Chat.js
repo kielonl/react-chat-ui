@@ -12,14 +12,22 @@ import removeCookie from "./components/rmCookie";
 
 const ENDPOINT = "http://localhost:8081/";
 let socket = io(ENDPOINT);
-socket.on("chat message", console.log);
 
-const ChatPage = ({ channelInfo }) => {
+const ChatPage = (props) => {
   const navigate = useNavigate();
   if (getCookie("user") === "{}") {
     removeCookie("user");
     navigate("/");
   }
+  if (getCookie("channel") === "{}") {
+    removeCookie("channel");
+    navigate("/home");
+  }
+  const room = getCookie("channel");
+  const user = JSON.parse(getCookie("user")).username;
+
+  console.log("cookie room " + room);
+
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);
@@ -30,22 +38,30 @@ const ChatPage = ({ channelInfo }) => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
-      socket.emit("chat message", {
-        type: "img",
-        value: reader.result,
-        userInfo: getCookie("user"),
-      });
+      socket.emit(
+        "chat message",
+        {
+          type: "img",
+          value: reader.result,
+          userInfo: props.user,
+        },
+        room
+      );
       setMessage("");
     };
   };
 
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit("chat message", {
-      type: "msg",
-      value: message,
-      userInfo: getCookie("user"),
-    });
+    socket.emit(
+      "chat message",
+      {
+        type: "msg",
+        value: message,
+        userInfo: props.user,
+      },
+      room
+    );
 
     setMessage("");
   };
@@ -59,25 +75,31 @@ const ChatPage = ({ channelInfo }) => {
       setReceivedMessage(messages.current);
     };
 
-    const joinEvent = (socket) => {
+    const joinEvent = (name) => {
       messages.current = [
         ...messages.current,
         {
           message: {
             type: "notification",
-            value: "user joined chat",
+            value: name + " joined channel",
           },
         },
       ];
       setReceivedMessage(messages.current);
     };
-    const leaveEvent = (socket) => {
+    const leaveEvent = (name) => {
       messages.current = [
         ...messages.current,
-        { message: { type: "notification", value: "user disconected" } },
+        {
+          message: {
+            type: "notification",
+            value: name + " disconected from channel",
+          },
+        },
       ];
       setReceivedMessage(messages.current);
     };
+    socket.emit("joinRoom", room, user);
 
     socket.on("chat message", event);
     socket.on("hello", joinEvent);
@@ -118,7 +140,7 @@ const ChatPage = ({ channelInfo }) => {
         <SideBar />
       </div>
       <div className="right-bar">
-        <Navbar itemListElement="h1" channelInfo={channelInfo} />
+        <Navbar itemListElement="h1" channelInfo={room} />
         <div className="chat-window">
           <div className="messages">
             {listItems}

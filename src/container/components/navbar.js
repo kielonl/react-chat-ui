@@ -13,7 +13,6 @@ const Navbar = (props) => {
   return (
     <nav id="navbar" className="MainNavbar">
       <div className="navbarT">channel: {props.channelInfo}</div>
-
       <div className="navbarM">
         <a href="/about">About</a>
       </div>
