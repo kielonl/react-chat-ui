@@ -1,11 +1,10 @@
 import React from "react";
-import "../style/Author.css";
 function Author(props) {
   return (
     <div className="author">
       <img
         src={props.source}
-        alt="website develeper"
+        //alt="website develeper"
         className="authorPhoto"
       ></img>
       <div className="container">

@@ -4,17 +4,26 @@
   margin: 0;
 }
 body {
-  background-color: #18181b;
+  background-color: white;
 }
 .container-about {
+  padding: 75px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .card {
-  background-color: white;
-  width: 270px;
-  height: 400px;
-  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  color: white;
+  flex-direction: column;
+  display: relative;
+  padding: 2px 16px;
+  transition: 0.3s;
+  min-width: 250px;
+  width: 20vh;
+  height: 450px;
+  margin: 30px;
 }
 .card-image {
   height: 300px;
@@ -23,20 +32,31 @@ body {
 }
 .card-1 {
   background-image: url(https://www.wykop.pl/cdn/c3201142/comment_D7XfAHC4AUqQWlMB6xHTtmo1947Zhpvu,w400.jpg);
+  alt: "website develeper";
 }
 .card-2 {
   background-image: url(https://st4.depositphotos.com/2249091/21946/i/1600/depositphotos_219464348-stock-photo-vertical-view-mother-holding-cute.jpg);
+  alt: "website develeper";
 }
 .card-3 {
   background-image: url(https://thumbs.dreamstime.com/b/para-seniora-razem-pionowe-805221.jpg);
+  alt: "website develeper";
 }
 .card-4 {
   background-image: url(https://thumbs.dreamstime.com/b/szcz%C4%99%C5%9Bliwa-rodzina-pionowe-4016034.jpg);
+  alt: "website develeper";
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fafafa;
+  color: black;
 }
 
 .footer-about {
-  justify-content: space-between;
   background-color: #2563eb;
-  clear: both;
-  height: 29px;
+  width: 100%;
+  position: fixed;
+  height: 40px;
+  bottom: 0;
 }
