@@ -1,14 +1,14 @@
 .abouttext {
-  text-align: center;
-  position: relative;
-  display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  position: relative;
   color: yellow;
+  display: flex;
 }
 #input {
-  color: yellow;
   background-color: #292524;
+  color: yellow;
 }
 .list {
   font-family: "Edu QLD Beginner", cursive;
@@ -18,13 +18,15 @@
   display: flex;
   height: auto;
   padding: 2px;
-  width: 100%;
 }
 .listbody {
   background-color: #171717;
   border: 5px solid #1c1917;
+  text-align: center;
   padding: 10px;
   color: blue;
+  height: 150px;
+  width: 500px;
 }
 .chanelname {
   color: green;
@@ -33,17 +35,8 @@
   color: red;
 }
 .jon {
-  border-radius: 50px 10px;
   background-color: #171717;
+  border-radius: 50px 10px;
   color: yellow;
   width: 10vh;
-}
-#one {
-  width: 100px;
-}
-#two {
-  width: 200px;
-}
-#tree {
-  width: 100px;
 }
