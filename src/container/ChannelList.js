@@ -63,38 +63,37 @@ const ChannelList = (props) => {
   }, []);
   if (!data) return <div></div>;
   return (
-    <div className="abouttext">
-      <h1>WebChat</h1>
-      <p>Nazwa kanału powinna mieć nie mniej niż 5 znaków</p>
-      <p>Na kanale nie może być mniej niż 2 os</p>
-      <div id="chanels">
-        <input
-          type={"text"}
-          placeholder="Podaj nazwe kanału"
-          name="Channel_name"
-          className="channels-inputs"
-          value={channel}
-          onChange={(e) => setChannel(e.target.value)}
-          autoComplete="off"
-        ></input>
-        <input
-          type={"number"}
-          placeholder="ile użytkowników"
-          name="Max_users"
-          className="channels-inputs"
-          value={maxUsers}
-          onChange={(e) => setMaxUsers(e.target.value)}
-          autoComplete="off"
-        ></input>
-
-        <button onClick={handleSubmit} className="channels-inputs">
-          Create chanel
-        </button>
-      </div>
-      <div>
-        {data.map((data, index) => {
-          return (
-            <div className="list">
+    <div className="body-channellist">
+      <div className="list-chennel">
+        <h1>WebChat</h1>
+        <h2>Nazwa kanału powinna mieć nie mniej niż 5 znaków</h2>
+        <h2>Na kanale nie może być mniej niż 2 os</h2>
+        <div id="chanels">
+          <input
+            type={"text"}
+            value={channel}
+            autoComplete="off"
+            name="Channel_name"
+            className="channels-inputs"
+            placeholder="Podaj nazwe kanału"
+            onChange={(e) => setChannel(e.target.value)}
+          ></input>
+          <input
+            onChange={(e) => setMaxUsers(e.target.value)}
+            placeholder="ile użytkowników"
+            className="channels-inputs"
+            autoComplete="off"
+            value={maxUsers}
+            name="Max_users"
+            type={"number"}
+          ></input>
+          <button onClick={handleSubmit} className="channels-inputs">
+            Create chanel
+          </button>
+        </div>
+        <div>
+          {data.map((data, index) => {
+            return (
               <table className="listbody" key={index}>
                 <tbody>
                   <tr>
@@ -133,10 +132,10 @@ const ChannelList = (props) => {
                   </tr>
                 </tbody>
               </table>
-            </div>
-          );
-        })}
-        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
+            );
+          })}
+          <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
+        </div>
       </div>
     </div>
   );
