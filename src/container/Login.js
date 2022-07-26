@@ -35,32 +35,36 @@ const Login = (props) => {
       });
   };
   return (
-    <div id="fromlog">
-      <div id="int">
-        <h1 id="upertext">Enter the space</h1>
-        <p className="input_text_above">Username</p>
-        <input
-          type={"text"}
-          name="user"
-          value={username}
-          autoComplete="off"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <p className="input_text_above">Image URL</p>
-        <input
-          type={"text"}
-          name="url"
-          value={imageUrl}
-          autoComplete="off"
-          onChange={(e) => setUrl(e.target.value)}
-        />
-        <p className="image-format-info">(jpg,jpeg,png)</p>
-        <div id="button">
-          <button className="loginButton" onClick={handleSubmit}>
-            Submit
-          </button>
+    <div className="bg">
+      <div id="fromlog">
+        <div id="int">
+          <h1 id="upertext">Enter the space</h1>
+          <p className="input_text_above">Username</p>
+          <input
+            type={"text"}
+            name="user"
+            value={username}
+            className="int-input"
+            autoComplete="off"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <p className="input_text_above">Image URL</p>
+          <input
+            type={"text"}
+            name="url"
+            value={imageUrl}
+            className="int-input"
+            autoComplete="off"
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <p className="image-format-info">(jpg,jpeg,png)</p>
+          <div id="button">
+            <button className="loginButton" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
+          <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
         </div>
-        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
       </div>
     </div>
   );

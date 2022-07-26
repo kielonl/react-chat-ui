@@ -1,12 +1,19 @@
 .abouttext {
+  background: rgb(241, 173, 0);
   flex-direction: column;
+  word-break: break-all;
   align-items: center;
   text-align: center;
   position: relative;
   color: yellow;
   display: flex;
+  background: radial-gradient(
+    circle,
+    rgba(241, 173, 0, 1) 3%,
+    rgba(245, 29, 6, 0.9139005944174545) 100%
+  );
 }
-#input {
+.channels-inputs {
   background-color: #292524;
   color: yellow;
 }
@@ -27,6 +34,15 @@
   color: blue;
   height: 150px;
   width: 500px;
+}
+#one {
+  width: 30%;
+}
+#two {
+  width: 40%;
+}
+#tree {
+  width: 30%;
 }
 .chanelname {
   color: green;

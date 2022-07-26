@@ -72,7 +72,7 @@ const ChannelList = (props) => {
           type={"text"}
           placeholder="Podaj nazwe kanału"
           name="Channel_name"
-          id="input"
+          className="channels-inputs"
           value={channel}
           onChange={(e) => setChannel(e.target.value)}
           autoComplete="off"
@@ -81,13 +81,13 @@ const ChannelList = (props) => {
           type={"number"}
           placeholder="ile użytkowników"
           name="Max_users"
-          id="input"
+          className="channels-inputs"
           value={maxUsers}
           onChange={(e) => setMaxUsers(e.target.value)}
           autoComplete="off"
         ></input>
 
-        <button onClick={handleSubmit} id="input">
+        <button onClick={handleSubmit} className="channels-inputs">
           Create chanel
         </button>
       </div>
@@ -113,7 +113,9 @@ const ChannelList = (props) => {
                       <div class="chanelname">{data.channelName}</div>
                     </td>
                     <td id="two">
-                      <div class="ower">{data.username}</div>
+                      <div class="ower" title={data.username}>
+                        {data.username}
+                      </div>
                     </td>
                     <td id="tree">
                       <div class="jonbutton">
