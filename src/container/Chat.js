@@ -143,6 +143,7 @@ const ChatPage = (props) => {
               id="files"
               className="hidden"
               onChange={sendFile}
+              accept="image/*"
             />
             <label for="files" className="SendFile">
               📸

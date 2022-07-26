@@ -73,6 +73,7 @@ const Login = (props) => {
           id="files"
           onChange={selectImage}
           className="hidden"
+          accept="image/*"
         />
         <label for="files" className="login-select-image">
           Select Image
