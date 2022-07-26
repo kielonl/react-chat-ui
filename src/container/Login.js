@@ -59,29 +59,31 @@ const Login = (props) => {
           className="text-input"
           onChange={(e) => setName(e.target.value)}
         />
-        <p className="input_text_above">Image URL</p>
-        <input
-          type={"text"}
-          name="url"
-          value={imageUrl}
-          autoComplete="off"
-          className="text-input"
-          onChange={(e) => setUrl(e.target.value)}
-        />
-        <input
-          type="file"
-          id="files"
-          onChange={selectImage}
-          className="hidden"
-          accept="image/*"
-        />
-        <label for="files" className="login-select-image">
-          Select Image
-        </label>
+        <p className="input_text_above">Image</p>
+        <div className="image-inputs">
+          <input
+            type={"text"}
+            name="url"
+            value={imageUrl}
+            autoComplete="off"
+            className="text-input image-input"
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <input
+            type="file"
+            id="files"
+            onChange={selectImage}
+            className="hidden"
+            accept="image/* "
+          />
+          <label for="files" className="login-select-image">
+            Select Image
+          </label>
+        </div>
         {/* <p className="image-format-info">(jpg,jpeg,png)</p> */}
         <div id="button">
           <button className="loginButton" onClick={handleSubmit}>
-            Submit
+            Log in
           </button>
         </div>
         <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />

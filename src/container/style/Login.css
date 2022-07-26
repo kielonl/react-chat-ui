@@ -40,14 +40,19 @@ body {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.07);
   border-radius: 3px;
-  padding: 0 10px;
   margin-top: 8px;
   font-size: 20px;
   font-weight: 300;
   outline: none;
   color: #5eead4;
 }
-
+#int .image-input{
+  width:50%;
+}
+.image-inputs{
+  display:flex;
+  justify-content: space-between;
+}
 .loginButton {
   margin-top: 50px;
   width: 100%;
@@ -61,24 +66,33 @@ body {
   border: none;
 }
 .login-select-image{
-  margin-top:1em;
+  cursor:pointer;
   display:flex;
+  backdrop-filter: blur(10px);
   background-color:white;
   color:black;
-  width:6em;
-  padding:6px;
+  width:8em;
+  height: 1em;
+  padding: 1.3em;
   letter-spacing: 1px;
-  border-radius:2px;
+  border-radius:5px;
+  justify-content: center;
+  align-self: center;
+  margin-top:0.5em;
+  background-color: #00fff77a;
+  font-weight:bold
+
 }
 .login-select-image:hover{
-  background-color:#e7e5e4
+  background-color:#065f46
+
 
 }
 .hidden{
   display:hidden
 }
 .loginButton:hover {
-  background-color: #a1a1aa;
+  background-color: #065f46;
 }
 .image-format-info {
   color: #fde047;
