@@ -17,38 +17,3 @@
 .home {
   color: yellow;
 }
-
-/*
-  Style do tabeli
-
-.list {
-  font-family: "Edu QLD Beginner", cursive;
-  border: 5px solid #ffff00;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  display: flex;
-  height: 150px;
-  width: 50%;
-}
-.listbody {
-  border-radius: 60px;
-  border: 5px solid black;
-  background-color: #fde047;
-  padding: 10px;
-  color: blue;
-}
-.chanelname {
-  border: 5px solid blue;
-  color: green;
-}
-.ower {
-  border: 5px solid green;
-  color: red;
-}
-.jon {
-  border: 5px solid #f4bc04;
-  border-radius: 50px 20px;
-  width: 10vh;
-}
-*/
