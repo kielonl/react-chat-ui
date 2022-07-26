@@ -72,6 +72,7 @@ const ChannelList = (props) => {
           type={"text"}
           placeholder="Podaj nazwe kanału"
           name="Channel_name"
+          id="input"
           value={channel}
           onChange={(e) => setChannel(e.target.value)}
           autoComplete="off"
@@ -80,40 +81,57 @@ const ChannelList = (props) => {
           type={"number"}
           placeholder="ile użytkowników"
           name="Max_users"
+          id="input"
           value={maxUsers}
           onChange={(e) => setMaxUsers(e.target.value)}
           autoComplete="off"
         ></input>
 
-        <button onClick={handleSubmit}>Create chanel</button>
+        <button onClick={handleSubmit} id="input">
+          Create chanel
+        </button>
       </div>
       <div>
         {data.map((data, index) => {
           return (
-            <table className="liusername" key={index}>
-              <tbody>
-                <tr>
-                  <th>Channel_name</th>
-                  <th>Owner</th>
-                  <th>Max users</th>
-                </tr>
-                <tr>
-                  <td>
-                    <div>JOIN</div>
-                    <div
-                      onClick={(e) => {
-                        props.setChannel(e.target.innerText);
-                        navigate("/chat");
-                      }}
-                    >
-                      {data.channelName}
-                    </div>
-                  </td>
-                  <td>{data.username}</td>
-                  <td>{data.maxNumberOfMembers}</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="list">
+              <table className="listbody" key={index}>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div>ChannelName</div>
+                    </td>
+                    <td>
+                      <div>Owner</div>
+                    </td>
+                    <td>
+                      <div>Dołącz</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="one">
+                      <div class="chanelname">{data.channelName}</div>
+                    </td>
+                    <td id="two">
+                      <div class="ower">{data.username}</div>
+                    </td>
+                    <td id="tree">
+                      <div class="jonbutton">
+                        <button
+                          class="jon"
+                          onClick={(e) => {
+                            props.setChannel(e.target.innerText);
+                            navigate("/chat");
+                          }}
+                        >
+                          JOIN
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           );
         })}
         <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
