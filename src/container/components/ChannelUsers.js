@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { LAST_API_URL } from "../../setup";
-const userURL = LAST_API_URL;
+const userURL = LAST_API_URL + "/users";
 const Users = () => {
   const [data, setDate] = useState([]);
   useEffect(() => {

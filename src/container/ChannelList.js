@@ -63,60 +63,79 @@ const ChannelList = (props) => {
   }, []);
   if (!data) return <div></div>;
   return (
-    <div className="abouttext">
-      <h1>WebChat</h1>
-      <p>Nazwa kanału powinna mieć nie mniej niż 5 znaków</p>
-      <p>Na kanale nie może być mniej niż 2 os</p>
-      <div id="chanels">
-        <input
-          type={"text"}
-          placeholder="Podaj nazwe kanału"
-          name="Channel_name"
-          value={channel}
-          onChange={(e) => setChannel(e.target.value)}
-          autoComplete="off"
-        ></input>
-        <input
-          type={"number"}
-          placeholder="ile użytkowników"
-          name="Max_users"
-          value={maxUsers}
-          onChange={(e) => setMaxUsers(e.target.value)}
-          autoComplete="off"
-        ></input>
-
-        <button onClick={handleSubmit}>Create chanel</button>
-      </div>
-      <div>
-        {data.map((data, index) => {
-          return (
-            <table className="liusername" key={index}>
-              <tbody>
-                <tr>
-                  <th>Channel_name</th>
-                  <th>Owner</th>
-                  <th>Max users</th>
-                </tr>
-                <tr>
-                  <td>
-                    <div>JOIN</div>
-                    <div
-                      onClick={(e) => {
-                        props.setChannel(e.target.innerText);
-                        navigate("/chat");
-                      }}
-                    >
-                      {data.channelName}
-                    </div>
-                  </td>
-                  <td>{data.username}</td>
-                  <td>{data.maxNumberOfMembers}</td>
-                </tr>
-              </tbody>
-            </table>
-          );
-        })}
-        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
+    <div className="body-channellist">
+      <div className="list-chennel">
+        <h1>WebChat</h1>
+        <h2>Nazwa kanału powinna mieć nie mniej niż 5 znaków</h2>
+        <h2>Na kanale nie może być mniej niż 2 os</h2>
+        <div id="chanels">
+          <input
+            type={"text"}
+            value={channel}
+            autoComplete="off"
+            name="Channel_name"
+            className="channels-inputs"
+            placeholder="Podaj nazwe kanału"
+            onChange={(e) => setChannel(e.target.value)}
+          ></input>
+          <input
+            onChange={(e) => setMaxUsers(e.target.value)}
+            placeholder="ile użytkowników"
+            className="channels-inputs"
+            autoComplete="off"
+            value={maxUsers}
+            name="Max_users"
+            type={"number"}
+          ></input>
+          <button onClick={handleSubmit} className="channels-inputs">
+            Create chanel
+          </button>
+        </div>
+        <div>
+          {data.map((data, index) => {
+            return (
+              <table className="listbody" key={index}>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div>ChannelName</div>
+                    </td>
+                    <td>
+                      <div>Owner</div>
+                    </td>
+                    <td>
+                      <div>Dołącz</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="one">
+                      <div class="chanelname">{data.channelName}</div>
+                    </td>
+                    <td id="two">
+                      <div class="ower" title={data.username}>
+                        {data.username}
+                      </div>
+                    </td>
+                    <td id="tree">
+                      <div class="jonbutton">
+                        <button
+                          class="jon"
+                          onClick={(e) => {
+                            props.setChannel(e.target.innerText);
+                            navigate("/chat");
+                          }}
+                        >
+                          JOIN
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          })}
+          <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
+        </div>
       </div>
     </div>
   );

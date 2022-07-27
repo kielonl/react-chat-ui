@@ -1,26 +1,62 @@
-body{
-    font-family: 'Roboto';
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
-.aboutFooter{
-    height: 55px;
-    background-color: #9ca3af;
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-weight: 100;
+body {
+  background-color: white;
 }
-.navSpacer{
-    flex: 1;
+.container-about {
+  padding: 75px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-main{
-    background-color: white;
-    
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  color: white;
+  flex-direction: column;
+  display: relative;
+  padding: 2px 16px;
+  transition: 0.3s;
+  min-width: 250px;
+  width: 20vh;
+  height: 450px;
+  margin: 30px;
 }
-.aboutText{
-    margin: 0%;
-    color: black;
-    text-align: center;
+.card-image {
+  height: 300px;
+  margin-bottom: 15px;
+  background-size: cover;
 }
-.container{
-    text-align: center;
+.card-1 {
+  background-image: url(https://www.wykop.pl/cdn/c3201142/comment_D7XfAHC4AUqQWlMB6xHTtmo1947Zhpvu,w400.jpg);
+  alt: "website develeper";
+}
+.card-2 {
+  background-image: url(https://st4.depositphotos.com/2249091/21946/i/1600/depositphotos_219464348-stock-photo-vertical-view-mother-holding-cute.jpg);
+  alt: "website develeper";
+}
+.card-3 {
+  background-image: url(https://thumbs.dreamstime.com/b/para-seniora-razem-pionowe-805221.jpg);
+  alt: "website develeper";
+}
+.card-4 {
+  background-image: url(https://thumbs.dreamstime.com/b/szcz%C4%99%C5%9Bliwa-rodzina-pionowe-4016034.jpg);
+  alt: "website develeper";
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fafafa;
+  color: black;
+}
+
+.footer-about {
+  background-color: #2563eb;
+  width: 100%;
+  position: fixed;
+  height: 40px;
+  bottom: 0;
 }
