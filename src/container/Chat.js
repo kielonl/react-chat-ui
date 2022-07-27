@@ -90,6 +90,7 @@ const ChatPage = (props) => {
       setReceivedMessage(messages.current);
     };
     const leaveEvent = (name) => {
+      
       messages.current = [
         ...messages.current,
         {

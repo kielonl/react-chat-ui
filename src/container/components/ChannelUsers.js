@@ -1,24 +1,33 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { LAST_API_URL } from "../../setup";
-const userURL = LAST_API_URL;
+import { SOCKET_URL } from "../../setup";
+import io from "socket.io-client";
+import getCookie from "./getCookie";
+
+const ENDPOINT = SOCKET_URL;
+let socket = io(ENDPOINT);
+const room = getCookie("channel");
 const Users = () => {
-  const [data, setDate] = useState([]);
-  useEffect(() => {
-    axios.get(userURL).then((resp) => {
-      setDate(resp.data);
-    });
-  }, []);
+  const [users, setUsers] = useState([]);
+
+  const updateList = (userList) => {
+    const newRoom = getCookie("channel");
+    setUsers(userList.filter((user) => user.channel === newRoom));
+    console.log(users);
+  };
+  socket.on("userList", updateList);
+  // socket.on("bye", deleteUser);
   return (
-    <>
-      {data.map((element, index) => {
-        return (
-          <h1 key={index} className="menu-item">
-            {element.username}
-          </h1>
-        );
+    <div>
+      Channel users list:
+      {users.map((person) => {
+        return <p className="menu-item">{person.username}</p>;
       })}
-    </>
+    </div>
+
+    //   <p className="menu-item">{person}</p>
+    // ));
+    // return <p>{userss}</p>;
   );
 };
 export default Users;
