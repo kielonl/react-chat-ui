@@ -56,7 +56,7 @@ const ChatPage = (props) => {
     const event = (message) => {
       const start = moment().format(" h:mm:ss a");
       console.log(start);
-      message.time = start;
+      messages.time = start;
       messages.current = [...messages.current, message];
       setReceivedMessage(messages.current);
     };
@@ -111,7 +111,7 @@ const ChatPage = (props) => {
         color={msgContainer.color}
         who={msgContainer.message.type}
         image={props.user.image}
-        time={message.time}
+        time={messages.time}
       />
     );
   });

@@ -2,6 +2,7 @@ import React from "react";
 import "../style/message.css";
 
 const Message = (props) => {
+  console.log(props.time);
   return (
     <>
       <h1
@@ -13,7 +14,11 @@ const Message = (props) => {
         style={{ backgroundColor: props.color }}
       >
         <img src={props.image} className="pfp" alt="profile-pic" />
-        <div className={"message-author"}>{props.author}</div> : {props.content}
+        <div className={"message-author"}>
+          {props.author}
+          {props.time}
+        </div>{" "}
+        : {props.content}
       </h1>
     </>
   );

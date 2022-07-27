@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
 import { LAST_API_URL } from "../setup";
 import { useNavigate } from "react-router-dom";
+import setCookie from "./components/setCookie";
 import removeCookie from "./components/rmCookie";
 import ErrorBox from "./components/ErrorBox";
 
@@ -129,6 +130,7 @@ const ChannelList = (props) => {
                         <button
                           class="jon"
                           onClick={(e) => {
+                            setCookie("channel", e.target.innerText);
                             props.setChannel(e.target.innerText);
                             navigate("/chat");
                           }}

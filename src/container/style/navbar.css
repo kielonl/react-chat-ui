@@ -1,23 +1,21 @@
-a{
-    margin: 0%;
-    color: white;
-    text-decoration: none;
-    float: left;
-    padding: 24px 40px;
-    font-size: 3vh;
-    text-align: center;
+a {
+  margin: 0%;
+  color: white;
+  text-decoration: none;
+  float: left;
+  padding: 24px 40px;
+  font-size: 3vh;
+  text-align: center;
 }
-a:hover{
-    background-color: #5f6268;
-    color: black;
+a:hover {
+  background-color: #5f6268;
+  color: black;
 }
 
-.MainNavbar{
-    width: 100vw;
-    background-color: #2563eb;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-
+.MainNavbar {
+  width: 100vw;
+  background-color: #2563eb;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }

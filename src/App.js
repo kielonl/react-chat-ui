@@ -5,7 +5,6 @@ import ChannelList from "./container/ChannelList";
 import Chatpage from "./container/Chat";
 import getCookie from "./container/components/getCookie";
 import setCookie from "./container/components/setCookie";
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [user, setUser] = useState({});
