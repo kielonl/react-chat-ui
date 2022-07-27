@@ -12,13 +12,12 @@ function App() {
   const [channel, setChannel] = useState({});
 
   useEffect(() => {
-    setUser(JSON.parse(getCookie("user")));
+    // setUser(JSON.parse(getCookie("user")));
     setChannel(getCookie("channel"));
   }, []);
 
   useEffect(() => {
     if (Object.keys(user).length !== 0) {
-      console.log(user);
       setCookie("user", JSON.stringify(user));
       setCookie("channel", channel);
     }

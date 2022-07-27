@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
+import setCookie from "./components/setCookie";
 import ErrorBox from "./components/ErrorBox";
 import removeCookie from "./components/rmCookie";
 import { LAST_API_URL } from "../setup";
@@ -25,6 +26,8 @@ const Login = (props) => {
       .then(function (response) {
         removeCookie("user");
         props.setUser(response.data);
+        console.log(JSON.stringify(response.data));
+        setCookie("user", JSON.stringify(response.data));
         navigate("/home");
         setErrorMessage({
           value: "",
@@ -32,10 +35,11 @@ const Login = (props) => {
         });
       })
       .catch(function (error) {
-        setErrorMessage({
-          value: error.response.data.errorMessage,
-          isError: true,
-        });
+        // setErrorMessage({
+        //   value: error.response.data.errorMessage,
+        //   isError: true,
+        // });
+        console.log(error);
       });
   };
   const selectImage = (e) => {
@@ -43,7 +47,6 @@ const Login = (props) => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      console.log(reader.result);
       setImage(reader.result);
       setImagePrev(true);
     };
@@ -72,7 +75,6 @@ const Login = (props) => {
             className="text-input image-input"
             onChange={(e) => {
               setUrl(e.target.value);
-              console.log(urlPattern.test(imageUrl));
               urlPattern.test(imageUrl)
                 ? setImagePrev(true)
                 : setImagePrev(false);
