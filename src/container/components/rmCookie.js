@@ -1,6 +1,4 @@
-import Cookie from "js-cookie";
-
 const removeCookie = (cookieName) => {
-  return Cookie.remove(cookieName);
+  return localStorage.removeItem(cookieName);
 };
 export default removeCookie;

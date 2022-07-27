@@ -1,6 +1,4 @@
-import Cookie from "js-cookie";
-
 const getCookie = (cookieName) => {
-  return Cookie.get(cookieName) || "{}";
+  return localStorage.getItem(cookieName) || "{}";
 };
 export default getCookie;

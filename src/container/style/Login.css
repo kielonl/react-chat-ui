@@ -29,21 +29,27 @@
   box-shadow: 0 0 150px rgb(0, 136, 255);
   padding: 50px 35px;
 }
-.int-input {
+.text-input {
   display: block;
   height: 50px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.07);
   border-radius: 3px;
-  padding: 0 10px;
   margin-top: 8px;
   font-size: 20px;
   font-weight: 300;
   outline: none;
   color: #5eead4;
 }
+.image-input{
+  width:50%;
+}
+.image-inputs{
+  display:flex;
+  justify-content: space-between;
+}
 .loginButton {
-  margin-top: 50px;
+  margin-top:25px;
   width: 100%;
   background-color: #00fff77a;
   color: #080710;
@@ -54,8 +60,34 @@
   cursor: pointer;
   border: none;
 }
-loginButton:hover {
-  background-color: #a1a1aa;
+.login-select-image{
+  cursor:pointer;
+  display:flex;
+  backdrop-filter: blur(10px);
+  background-color:white;
+  color:black;
+  width:9em;
+  height: 3em;
+  padding: 1em;
+  letter-spacing: 1px;
+  border-radius:5px;
+  justify-content: center;
+  align-self: center;
+  margin-top:0.5em;
+  background-color: #00fff77a;
+  font-weight:bold
+  
+}
+.login-select-image:hover{
+  background-color:#065f46
+
+
+}
+.hidden{
+  display:hidden
+}
+.loginButton:hover {
+  background-color: #065f46;
 }
 .image-format-info {
   color: #fde047;
@@ -66,6 +98,4 @@ loginButton:hover {
 .input_text_above {
   color: #fde047;
 }
-.text-color {
-  color: #a3e635;
-}
+
