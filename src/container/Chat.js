@@ -87,7 +87,6 @@ const ChatPage = (props) => {
       socket.off("chat message", event);
     };
   }, []);
-  console.log(receivedMessage);
   const listItems = receivedMessage.map((msgContainer, i) => {
     if (msgContainer.message.type === "img") {
       return (

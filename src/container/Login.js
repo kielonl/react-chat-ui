@@ -26,7 +26,6 @@ const Login = (props) => {
       .then(function (response) {
         removeCookie("user");
         props.setUser(response.data);
-        console.log(JSON.stringify(response.data));
         setCookie("user", JSON.stringify(response.data));
         navigate("/home");
         setErrorMessage({
@@ -35,11 +34,10 @@ const Login = (props) => {
         });
       })
       .catch(function (error) {
-        // setErrorMessage({
-        //   value: error.response.data.errorMessage,
-        //   isError: true,
-        // });
-        console.log(error);
+        setErrorMessage({
+          value: error.response.data.errorMessage,
+          isError: true,
+        });
       });
   };
   const selectImage = (e) => {
