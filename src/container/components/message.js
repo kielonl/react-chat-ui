@@ -2,7 +2,6 @@ import React from "react";
 import "../style/message.css";
 
 const Message = (props) => {
-  console.log(props.time);
   return (
     <>
       <h1

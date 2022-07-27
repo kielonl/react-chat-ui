@@ -55,7 +55,7 @@ const ChatPage = (props) => {
   useEffect(() => {
     const event = (message) => {
       const start = moment().format(" h:mm:ss a");
-      messages.time = start;
+      message.time = start;
       messages.current = [...messages.current, message];
       setReceivedMessage(messages.current);
     };
@@ -91,6 +91,7 @@ const ChatPage = (props) => {
   }, []);
 
   const listItems = receivedMessage.map((msgContainer, i) => {
+    console.log(msgContainer);
     if (msgContainer.message.type === "img") {
       return (
         <Photo
@@ -110,7 +111,7 @@ const ChatPage = (props) => {
         color={msgContainer.color}
         who={msgContainer.message.type}
         image={props.user.image}
-        time={messages.time}
+        time={msgContainer.time}
       />
     );
   });
