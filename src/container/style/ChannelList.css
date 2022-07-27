@@ -6,7 +6,6 @@
   align-items: center;
   text-align: center;
   display: flex;
-  height: auto;
   padding: 2px;
 }
 .list-chennel {
@@ -40,12 +39,9 @@
   width: 30%;
 }
 #two {
-  width: 20%;
+  width: 40%;
 }
 #tree {
-  width: 20%;
-}
-#four {
   width: 30%;
 }
 .chanelname {
