@@ -11,7 +11,7 @@ function App() {
   const [channel, setChannel] = useState({});
 
   useEffect(() => {
-    setUser(JSON.parse(getCookie("user")));
+    // setUser(JSON.parse(getCookie("user")));
     setChannel(getCookie("channel"));
   }, []);
 
