@@ -55,7 +55,6 @@ const ChatPage = (props) => {
   useEffect(() => {
     const event = (message) => {
       const start = moment().format(" h:mm:ss a");
-      console.log(start);
       messages.time = start;
       messages.current = [...messages.current, message];
       setReceivedMessage(messages.current);
