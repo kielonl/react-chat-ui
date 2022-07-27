@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     if (Object.keys(user).length !== 0) {
-      console.log(user);
       setCookie("user", JSON.stringify(user));
       setCookie("channel", channel);
     }

@@ -91,7 +91,6 @@ const ChatPage = (props) => {
   }, []);
 
   const listItems = receivedMessage.map((msgContainer, i) => {
-    console.log(msgContainer);
     if (msgContainer.message.type === "img") {
       return (
         <Photo
