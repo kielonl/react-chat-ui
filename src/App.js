@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [user, setUser] = useState({});
   const [channel, setChannel] = useState({});
+
   useEffect(() => {
     setUser(JSON.parse(getCookie("user")));
     setChannel(getCookie("channel"));

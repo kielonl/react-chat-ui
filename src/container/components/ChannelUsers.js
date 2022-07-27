@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-const userURL = " http://localhost:8080/users";
+import { LAST_API_URL } from "../../setup";
+const userURL = LAST_API_URL;
 const Users = () => {
   const [data, setDate] = useState([]);
   useEffect(() => {

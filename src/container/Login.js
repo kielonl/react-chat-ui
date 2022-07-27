@@ -4,9 +4,8 @@ import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
 import ErrorBox from "./components/ErrorBox";
 import removeCookie from "./components/rmCookie";
-import setCookie from "./components/setCookie";
-
-const url = "http://localhost:8080/users";
+import { LAST_API_URL } from "../setup";
+const url = LAST_API_URL + "/users";
 const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
@@ -21,9 +20,12 @@ const Login = (props) => {
       })
       .then(function (response) {
         removeCookie("user");
-        setCookie("user", JSON.stringify(response.data));
         props.setUser(response.data);
         navigate("/home");
+        setErrorMessage({
+          value: "",
+          isError: false,
+        });
       })
       .catch(function (error) {
         setErrorMessage({

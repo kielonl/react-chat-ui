@@ -1,40 +1,55 @@
 import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
+import { LAST_API_URL } from "../setup";
 import { useNavigate } from "react-router-dom";
 import setCookie from "./components/setCookie";
-import socket from "socket.io-client";
+import removeCookie from "./components/rmCookie";
+import ErrorBox from "./components/ErrorBox";
 
 const axios = require("axios");
 const ChannelList = (props) => {
-  const chanelUrl = " http://localhost:8080/channels";
+  const navigate = useNavigate();
+  if (props.user === "{}" || !props.user) {
+    removeCookie("user");
+    navigate("/");
+  }
+  const send = LAST_API_URL + "/channels";
   const [data, setDate] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
   const [channel, setChannel] = useState("");
-  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState({});
+
   const handleSubmit = async (e) => {
     if (!maxUsers || !channel || !channel < 0) {
       alert("Popraw error");
       return;
     }
     axios
-      .post(chanelUrl, {
+      .post(send, {
         uuid: props.user.uuid,
         maxUsers: maxUsers,
         channelName: channel,
       })
       .then(function (response) {
         pullData();
+        setErrorMessage({
+          value: "",
+          isError: false,
+        });
       })
       .catch(function (error) {
-        console.log(error);
+        setErrorMessage({
+          value: error.response.data.errorMessage,
+          isError: true,
+        });
       });
   };
   const pullData = async (e) => {
     const channelArray = [];
-    const channelsGET = await axios.get("http://localhost:8080/channels");
+    const channelsGET = await axios.get(LAST_API_URL + "/channels");
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
-      const result = await axios.get("http://localhost:8080/users/" + ch.owner);
+      const result = await axios.get(LAST_API_URL + "/users/" + ch.owner);
 
       const channelObject = {
         ...ch,
@@ -104,6 +119,7 @@ const ChannelList = (props) => {
             </table>
           );
         })}
+        <ErrorBox error={errorMessage.value} ifError={errorMessage.isError} />
       </div>
     </div>
   );

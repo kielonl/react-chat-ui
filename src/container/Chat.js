@@ -8,14 +8,16 @@ import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import getCookie from "./components/getCookie";
-import removeCookie from "./components/rmCookie";
 
-const ENDPOINT = "http://localhost:8081/";
+import removeCookie from "./components/rmCookie";
+import { SOCKET_URL } from "../setup";
+const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
   const navigate = useNavigate();
-  if (getCookie("user") === "{}") {
+
+  if (props.user === "{}" || !props.user) {
     removeCookie("user");
     navigate("/");
   }
@@ -119,6 +121,8 @@ const ChatPage = (props) => {
           key={i}
           content={msgContainer.message.value}
           author={msgContainer.userNickname}
+          color={msgContainer.color}
+          image={props.user.image}
         />
       );
     }
@@ -129,6 +133,7 @@ const ChatPage = (props) => {
         author={msgContainer.userNickname}
         color={msgContainer.color}
         who={msgContainer.message.type}
+        image={props.user.image}
       />
     );
   });
@@ -157,8 +162,17 @@ const ChatPage = (props) => {
               }}
               id="input"
               autoComplete="off"
-            ></input>
-            <input type="file" className="sendFile" onChange={sendFile} />
+              className="message-input"
+            />
+            <input
+              type="file"
+              id="files"
+              className="hidden"
+              onChange={sendFile}
+            />
+            <label for="files" className="SendFile">
+              📸
+            </label>
             <button type="submit" onClick={sendMessage} className="send">
               🍻
             </button>
