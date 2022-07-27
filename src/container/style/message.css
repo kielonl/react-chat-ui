@@ -36,6 +36,10 @@
     font-size:20px;
     align-self: flex-start;
 }
+.photo img{
+    max-width: 400px;
+    max-height:200px;
+}
 .pfp{
     margin-right:10px;
     height:50px;

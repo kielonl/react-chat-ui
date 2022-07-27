@@ -114,7 +114,6 @@ const ChatPage = (props) => {
       socket.off("chat message", event);
     };
   }, []);
-
   const listItems = receivedMessage.map((msgContainer, i) => {
     if (msgContainer.message.type === "img") {
       return (
@@ -170,6 +169,7 @@ const ChatPage = (props) => {
               id="files"
               className="hidden"
               onChange={sendFile}
+              accept="image/*"
             />
             <label for="files" className="SendFile">
               📸
