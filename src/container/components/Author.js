@@ -4,7 +4,7 @@ function Author(props) {
     <div className="author">
       <img
         src={props.source}
-        //alt="website develeper"
+        alt="website develeper"
         className="authorPhoto"
       ></img>
       <div className="container">
