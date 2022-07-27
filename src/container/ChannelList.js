@@ -104,6 +104,9 @@ const ChannelList = (props) => {
                       <div>Owner</div>
                     </td>
                     <td>
+                      <div>MaxUsers</div>
+                    </td>
+                    <td>
                       <div>Dołącz</div>
                     </td>
                   </tr>
@@ -117,6 +120,11 @@ const ChannelList = (props) => {
                       </div>
                     </td>
                     <td id="tree">
+                      <div class="ower" title={data.maxUsers}>
+                        {data.maxNumberOfMembers}
+                      </div>
+                    </td>
+                    <td id="four">
                       <div class="jonbutton">
                         <button
                           class="jon"

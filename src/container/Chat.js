@@ -8,6 +8,7 @@ import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
 import removeCookie from "./components/rmCookie";
+import moment from "moment";
 import { SOCKET_URL } from "../setup";
 const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
@@ -53,10 +54,12 @@ const ChatPage = (props) => {
 
   useEffect(() => {
     const event = (message) => {
+      const start = moment().format(" h:mm:ss a");
+      console.log(start);
+      message.time = start;
       messages.current = [...messages.current, message];
       setReceivedMessage(messages.current);
     };
-
     const joinEvent = (socket) => {
       messages.current = [
         ...messages.current,
@@ -108,6 +111,7 @@ const ChatPage = (props) => {
         color={msgContainer.color}
         who={msgContainer.message.type}
         image={props.user.image}
+        time={message.time}
       />
     );
   });
