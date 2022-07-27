@@ -1,33 +1,59 @@
-.homepage {
+.body-channellist {
+  background-color: #292524;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Edu QLD Beginner", cursive;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  height: auto;
+  padding: 2px;
+}
+.list-chennel {
+  flex-direction: column;
+  word-break: break-all;
+  align-items: center;
   text-align: center;
   position: relative;
+  color: yellow;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  float: left;
 }
-.abouttext {
+.chanels {
+  background-color: #292524;
+  color: yellow;
+}
+.channels-inputs {
+  background-color: #18181b;
+  color: #a3e635;
+  font-size: medium;
+}
+.listbody {
+  background-color: #171717;
+  border: 5px solid #1c1917;
   text-align: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: yellow;
+  padding: 10px;
+  color: rgb(0, 238, 255);
+  height: 150px;
+  width: 500px;
 }
-.home {
-  color: yellow;
+#one {
+  width: 30%;
 }
-.liusername {
-  border: 3px solid yellow;
-  background-color: #3f3f46;
-  width: 100%;
+#two {
+  width: 40%;
 }
-th {
-  width: 33%;
+#tree {
+  width: 30%;
 }
-tr {
-  width: 33%;
+.chanelname {
+  color: green;
 }
-td {
-  width: 33%;
+.ower {
+  color: red;
+}
+.jon {
+  background-color: #d4d4d8;
+  border-radius: 50px 10px;
+  color: #27272a;
+  width: 10vh;
 }

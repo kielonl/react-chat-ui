@@ -5,13 +5,15 @@ import { useNavigate } from "react-router-dom";
 import ErrorBox from "./components/ErrorBox";
 import removeCookie from "./components/rmCookie";
 import { LAST_API_URL } from "../setup";
+import ImagePreview from "./components/imagePreview";
 const url = LAST_API_URL + "/users";
 const Login = (props) => {
   const [username, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const [image, setImage] = useState("");
-
+  const [imagePrev, setImagePrev] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
+  const urlPattern = new RegExp("(https?://.*.(?:png|jpg|webp|jpeg))");
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,12 +45,13 @@ const Login = (props) => {
     reader.onload = () => {
       console.log(reader.result);
       setImage(reader.result);
+      setImagePrev(true);
     };
     setImage("");
   };
   return (
-    <div id="fromlog">
-      <div id="int">
+    <div className="login-text">
+      <div className="login-inputs">
         <h1 id="upertext">Enter the space</h1>
         <p className="input_text_above">Username</p>
         <input
@@ -67,20 +70,27 @@ const Login = (props) => {
             value={imageUrl}
             autoComplete="off"
             className="text-input image-input"
-            onChange={(e) => setUrl(e.target.value)}
+            onChange={(e) => {
+              setUrl(e.target.value);
+              console.log(urlPattern.test(imageUrl));
+              urlPattern.test(imageUrl)
+                ? setImagePrev(true)
+                : setImagePrev(false);
+            }}
           />
           <input
             type="file"
             id="files"
             onChange={selectImage}
             className="hidden"
-            accept="image/* "
+            accept="image/*"
           />
           <label for="files" className="login-select-image">
             Select Image
           </label>
         </div>
         {/* <p className="image-format-info">(jpg,jpeg,png)</p> */}
+        <ImagePreview source={image || imageUrl} display={imagePrev} />
         <div id="button">
           <button className="loginButton" onClick={handleSubmit}>
             Log in

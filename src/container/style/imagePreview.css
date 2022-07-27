@@ -1,0 +1,10 @@
+.preview-false{
+    display:none
+}
+
+.image-preview{
+    margin-top:1em;
+    height:100px;
+    width:100px;
+    border-radius:100%
+}

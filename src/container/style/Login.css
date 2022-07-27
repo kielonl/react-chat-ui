@@ -1,27 +1,22 @@
-body {
-  background-color: #2d2b2a;
-  letter-spacing: 0.5px;
-  font-family: 'Roboto';
-
-}
-#upertext {
-  font-weight: bold;
-  color: greenyellow;
+.Login-body {
+  background-color: #1c1917;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .input-text-above {
   float: left;
   font-weight: bold;
 }
-#fromlog {
+.login-text {
   justify-content: center;
   flex-direction: column;
   align-items: center;
   text-align: center;
   display: flex;
 }
-#int {
+.login-inputs {
   color: white;
-  background-color: #1c1917;
+
   height: max-content;
   width: 22.4rem;
   position: absolute;
@@ -34,7 +29,7 @@ body {
   box-shadow: 0 0 150px rgb(0, 136, 255);
   padding: 50px 35px;
 }
-#int .text-input{
+.text-input {
   display: block;
   height: 50px;
   width: 100%;
@@ -46,7 +41,7 @@ body {
   outline: none;
   color: #5eead4;
 }
-#int .image-input{
+.image-input{
   width:50%;
 }
 .image-inputs{
@@ -71,9 +66,9 @@ body {
   backdrop-filter: blur(10px);
   background-color:white;
   color:black;
-  width:8em;
-  height: 1em;
-  padding: 1.3em;
+  width:9em;
+  height: 3em;
+  padding: 1em;
   letter-spacing: 1px;
   border-radius:5px;
   justify-content: center;
@@ -81,7 +76,7 @@ body {
   margin-top:0.5em;
   background-color: #00fff77a;
   font-weight:bold
-
+  
 }
 .login-select-image:hover{
   background-color:#065f46
@@ -103,3 +98,4 @@ body {
 .input_text_above {
   color: #fde047;
 }
+
