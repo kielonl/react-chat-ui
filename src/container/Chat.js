@@ -14,8 +14,6 @@ let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
   if (Object.keys(props.user).length === 0) {
-    console.log("dupa");
-    console.log({ ...props });
     logout();
   }
 

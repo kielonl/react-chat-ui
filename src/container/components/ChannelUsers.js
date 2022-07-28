@@ -10,7 +10,6 @@ const Users = (props) => {
   const updateList = (userList) => {
     const newRoom = props.channel;
     setUsers(userList.filter((user) => user.channel === newRoom));
-    console.log(users);
   };
   socket.on("userList", updateList);
   return (

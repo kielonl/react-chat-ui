@@ -6,7 +6,6 @@ const Navbar = (props) => {
   const handleLogout = () => {
     logout();
   };
-  console.log(props);
 
   if (!props.channelInfo.channelName) return <div></div>;
   return (
