@@ -5,7 +5,7 @@ import { slide as Menu } from "react-burger-menu";
 const SideBar = (props) => {
   return (
     <Menu>
-      <Users user={props.channel} />
+      <Users channel={props.channel} />
     </Menu>
   );
 };

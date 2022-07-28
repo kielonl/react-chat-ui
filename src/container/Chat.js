@@ -37,7 +37,7 @@ const ChatPage = (props) => {
           value: reader.result,
           userInfo: props.user,
         },
-        room
+        room.channelName
       );
       setMessage("");
     };
@@ -52,7 +52,7 @@ const ChatPage = (props) => {
         value: message,
         userInfo: props.user,
       },
-      room
+      room.channelName
     );
 
     setMessage("");
@@ -61,37 +61,39 @@ const ChatPage = (props) => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [receivedMessage]);
 
-  useEffect(() => {
-    const event = (message) => {
-      messages.current = [...messages.current, message];
-      setReceivedMessage(messages.current);
-    };
+  const event = (message) => {
+    console.log(message);
+    messages.current = [...messages.current, message];
+    setReceivedMessage(messages.current);
+  };
 
-    const joinEvent = (name) => {
-      messages.current = [
-        ...messages.current,
-        {
-          message: {
-            type: "notification",
-            value: name + " joined channel",
-          },
+  const joinEvent = (name) => {
+    messages.current = [
+      ...messages.current,
+      {
+        message: {
+          type: "notification",
+          value: name.username + " joined channel",
         },
-      ];
-      setReceivedMessage(messages.current);
-    };
-    const leaveEvent = (name) => {
-      messages.current = [
-        ...messages.current,
-        {
-          message: {
-            type: "notification",
-            value: name + " disconected from channel",
-          },
+      },
+    ];
+    setReceivedMessage(messages.current);
+  };
+  const leaveEvent = (name) => {
+    messages.current = [
+      ...messages.current,
+      {
+        message: {
+          type: "notification",
+          value: name.username + " disconected from channel",
         },
-      ];
-      setReceivedMessage(messages.current);
-    };
-    socket.emit("joinRoom", room, user);
+      },
+    ];
+    setReceivedMessage(messages.current);
+  };
+
+  useEffect(() => {
+    socket.emit("joinRoom", room.channelName, user);
 
     socket.on("chat message", event);
     socket.on("hello", joinEvent);
@@ -102,7 +104,8 @@ const ChatPage = (props) => {
       socket.off("bye", leaveEvent);
       socket.off("chat message", event);
     };
-  });
+  }, []);
+
   const listItems = receivedMessage.map((msgContainer, i) => {
     if (msgContainer.message.type === "img") {
       return (
@@ -131,7 +134,7 @@ const ChatPage = (props) => {
     <div className="body">
       <SideBtn />
       <div className="left-bar">
-        <SideBar user={props.channel} />
+        <SideBar channel={props.channel} />
       </div>
       <div className="right-bar">
         <Navbar itemListElement="h1" channelInfo={room} />

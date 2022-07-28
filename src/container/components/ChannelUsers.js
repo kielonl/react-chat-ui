@@ -8,8 +8,9 @@ const Users = (props) => {
   const [users, setUsers] = useState([]);
 
   const updateList = (userList) => {
-    const newRoom = props.channel;
+    const newRoom = props.channel.channelName;
     setUsers(userList.filter((user) => user.channel === newRoom));
+    console.log(users, userList, newRoom);
   };
   socket.on("userList", updateList);
   return (
