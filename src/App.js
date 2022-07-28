@@ -24,7 +24,6 @@ function App() {
       storageManager.save("channel", channel);
     }
   }, [user, channel]);
-  user, channel;
 
   if (!user || !channel) return <div></div>;
   return (
