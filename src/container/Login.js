@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style/Login.css";
 import { useNavigate } from "react-router-dom";
-import setCookie from "./components/setCookie";
 import ErrorBox from "./components/ErrorBox";
-import removeCookie from "./components/rmCookie";
 import { LAST_API_URL } from "../setup";
 import ImagePreview from "./components/imagePreview";
+
 const url = LAST_API_URL + "/users";
 const Login = (props) => {
   const [username, setName] = useState("");
@@ -24,9 +23,7 @@ const Login = (props) => {
         imageUrl: image || imageUrl,
       })
       .then(function (response) {
-        removeCookie("user");
         props.setUser(response.data);
-        setCookie("user", JSON.stringify(response.data));
         navigate("/home");
         setErrorMessage({
           value: "",
@@ -85,7 +82,7 @@ const Login = (props) => {
             className="hidden"
             accept="image/*"
           />
-          <label for="files" className="login-select-image">
+          <label htmlFor="files" className="login-select-image">
             Select Image
           </label>
         </div>

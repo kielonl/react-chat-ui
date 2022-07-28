@@ -5,7 +5,7 @@ const ImagePrev = (props) => {
     <img
       src={props.source}
       className={props.display ? "preview-true image-preview" : "preview-false"}
-      alt="image-preview"
+      alt="preview"
     />
   );
 };

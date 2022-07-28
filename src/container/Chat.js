@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import "./style/chat.css";
 import Navbar from "./components/navbar";
 import SideBar from "./components/sidebar";
@@ -7,18 +6,21 @@ import Message from "./components/message";
 import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-import removeCookie from "./components/rmCookie";
 import moment from "moment";
 import { SOCKET_URL } from "../setup";
+import { logout } from "./components/logout";
+
 const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
-  const navigate = useNavigate();
-  if (props.user === "{}" || !props.user) {
-    removeCookie("user");
-    navigate("/");
+  if (Object.keys(props.user).length === 0) {
+    logout();
   }
+
+  const room = props.channel;
+  const user = props.user;
+
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
   const messages = useRef([]);
@@ -29,22 +31,30 @@ const ChatPage = (props) => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
-      socket.emit("chat message", {
-        type: "img",
-        value: reader.result,
-        userInfo: props.user,
-      });
+      socket.emit(
+        "chat message",
+        {
+          type: "img",
+          value: reader.result,
+          userInfo: props.user,
+        },
+        room
+      );
       setMessage("");
     };
   };
 
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit("chat message", {
-      type: "msg",
-      value: message,
-      userInfo: props.user,
-    });
+    socket.emit(
+      "chat message",
+      {
+        type: "msg",
+        value: message,
+        userInfo: props.user,
+      },
+      room
+    );
 
     setMessage("");
   };
@@ -59,25 +69,32 @@ const ChatPage = (props) => {
       messages.current = [...messages.current, message];
       setReceivedMessage(messages.current);
     };
-    const joinEvent = (socket) => {
+
+    const joinEvent = (name) => {
       messages.current = [
         ...messages.current,
         {
           message: {
             type: "notification",
-            value: "user joined chat",
+            value: name + " joined channel",
           },
         },
       ];
       setReceivedMessage(messages.current);
     };
-    const leaveEvent = (socket) => {
+    const leaveEvent = (name) => {
       messages.current = [
         ...messages.current,
-        { message: { type: "notification", value: "user disconected" } },
+        {
+          message: {
+            type: "notification",
+            value: name + " disconected from channel",
+          },
+        },
       ];
       setReceivedMessage(messages.current);
     };
+    socket.emit("joinRoom", room, user);
 
     socket.on("chat message", event);
     socket.on("hello", joinEvent);
@@ -88,7 +105,7 @@ const ChatPage = (props) => {
       socket.off("bye", leaveEvent);
       socket.off("chat message", event);
     };
-  }, []);
+  });
   const listItems = receivedMessage.map((msgContainer, i) => {
     if (msgContainer.message.type === "img") {
       return (
@@ -118,10 +135,10 @@ const ChatPage = (props) => {
     <div className="body">
       <SideBtn />
       <div className="left-bar">
-        <SideBar />
+        <SideBar user={props.channel} />
       </div>
       <div className="right-bar">
-        <Navbar itemListElement="h1" />
+        <Navbar itemListElement="h1" channelInfo={room} />
         <div className="chat-window">
           <div className="messages">
             {listItems}
@@ -147,7 +164,7 @@ const ChatPage = (props) => {
               onChange={sendFile}
               accept="image/*"
             />
-            <label for="files" className="SendFile">
+            <label htmlFor="files" className="SendFile">
               📸
             </label>
             <button type="submit" onClick={sendMessage} className="send">

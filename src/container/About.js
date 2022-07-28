@@ -16,24 +16,24 @@ function About() {
         href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
         rel="stylesheet"
       ></link>
-      <div class="navbar-about">
+      <div className="navbar-about">
         <Navbar></Navbar>
       </div>
-      <section class="container-about">
-        <div class="card">
-          <div class="card-image card-1"></div>
+      <section className="container-about">
+        <div className="card">
+          <div className="card-image card-1"></div>
           <Author name="Miłosz Stachlewski" role="Backend" />
         </div>
-        <div class="card">
-          <div class="card-image card-2"></div>
+        <div className="card">
+          <div className="card-image card-2"></div>
           <Author name="Kielon" role="Backend" />
         </div>
-        <div class="card">
-          <div class="card-image card-3"></div>
+        <div className="card">
+          <div className="card-image card-3"></div>
           <Author name="Filip Popławski" role="Frontend" />
         </div>
-        <div class="card">
-          <div class="card-image card-4"></div>
+        <div className="card">
+          <div className="card-image card-4"></div>
           <Author name="Oskar Kotlarski" role="Backend" />
         </div>
       </section>

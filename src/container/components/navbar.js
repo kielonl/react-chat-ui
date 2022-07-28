@@ -1,18 +1,16 @@
 import React from "react";
 import "../style/navbar.css";
-import removeCookie from "../components/rmCookie";
-import { useNavigate } from "react-router-dom";
+import { logout } from "./logout";
+
 const Navbar = (props) => {
-  const navigate = useNavigate();
   const handleLogout = () => {
-    removeCookie("user");
-    navigate("/");
-    return;
+    logout();
   };
 
+  if (!props.channelInfo.channelName) return <div></div>;
   return (
     <nav id="navbar" className="MainNavbar">
-      <div className="navbarT">channel: {props.channelInfo}</div>
+      <div className="navbarT">channel: {props.channelInfo.channelName}</div>
       <div className="navbarM">
         <a href="/about">About</a>
       </div>
