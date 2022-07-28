@@ -1,33 +1,36 @@
-import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
-import { LAST_API_URL } from "../setup";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import removeCookie from "./components/rmCookie";
-import ErrorBox from "./components/ErrorBox";
+import axios from "axios";
 
-const axios = require("axios");
+import { LAST_API_URL } from "../setup";
+import ErrorBox from "./components/ErrorBox";
+import { logout } from "./components/logout";
+
+const CHANNELS_ENDPOINT = LAST_API_URL + "/channels";
+
 const ChannelList = (props) => {
-  const navigate = useNavigate();
-  if (props.user === "{}" || !props.user) {
-    removeCookie("user");
-    navigate("/");
-  }
-  const send = LAST_API_URL + "/channels";
-  const [data, setDate] = useState([]);
+  const [channelsList, setChannelsList] = useState([]);
   const [maxUsers, setMaxUsers] = useState(0);
-  const [channel, setChannel] = useState("");
+  const [channelName, setChannelName] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
 
+  const navigate = useNavigate();
+
+  if (props.user === "{}" || !props.user) {
+    logout();
+  }
+
   const handleSubmit = async (e) => {
-    if (!maxUsers || !channel || !channel < 0) {
+    if (!maxUsers || !channelName) {
       alert("Popraw error");
       return;
     }
     axios
-      .post(send, {
+      .post(CHANNELS_ENDPOINT, {
         uuid: props.user.uuid,
         maxUsers: maxUsers,
-        channelName: channel,
+        channelName: channelName,
       })
       .then(function (response) {
         pullData();
@@ -43,9 +46,11 @@ const ChannelList = (props) => {
         });
       });
   };
+
   const pullData = async (e) => {
     const channelArray = [];
-    const channelsGET = await axios.get(LAST_API_URL + "/channels");
+    const channelsGET = await axios.get(CHANNELS_ENDPOINT);
+
     for (let i = 0; i < channelsGET.data.length; i++) {
       const ch = channelsGET.data[i];
       const result = await axios.get(LAST_API_URL + "/users/" + ch.owner);
@@ -56,12 +61,13 @@ const ChannelList = (props) => {
       };
       channelArray.push(channelObject);
     }
-    setDate(channelArray);
+    setChannelsList(channelArray);
   };
   useEffect(() => {
     pullData();
   }, []);
-  if (!data) return <div></div>;
+
+  if (!channelsList) return <div></div>;
   return (
     <div className="body-channellist">
       <div className="list-chennel">
@@ -71,12 +77,12 @@ const ChannelList = (props) => {
         <div id="chanels">
           <input
             type={"text"}
-            value={channel}
+            value={channelName}
             autoComplete="off"
             name="Channel_name"
             className="channels-inputs"
             placeholder="Podaj nazwe kanału"
-            onChange={(e) => setChannel(e.target.value)}
+            onChange={(e) => setChannelName(e.target.value)}
           ></input>
           <input
             onChange={(e) => setMaxUsers(e.target.value)}
@@ -92,14 +98,11 @@ const ChannelList = (props) => {
           </button>
         </div>
         <div>
-          {data.map((data, index) => {
+          {channelsList.map((channelInfo, index) => {
             return (
               <table className="listbody" key={index}>
                 <tbody>
                   <tr>
-                    <td>
-                      <div>ChannelName</div>
-                    </td>
                     <td>
                       <div>Owner</div>
                     </td>
@@ -109,26 +112,24 @@ const ChannelList = (props) => {
                   </tr>
                   <tr>
                     <td id="one">
-                      <div class="chanelname">{data.channelName}</div>
-                    </td>
-                    <td id="two">
-                      <div class="ower" title={data.username}>
-                        {data.username}
-                      </div>
-                    </td>
-                    <td id="tree">
-                      <div class="jonbutton">
+                      <div className="jonbutton">
                         <button
-                          class="jon"
+                          className="jon"
                           onClick={(e) => {
-                            props.setChannel(e.target.innerText);
+                            props.setChannel(channelInfo);
                             navigate("/chat");
                           }}
                         >
-                          JOIN
+                          {channelInfo.channelName}
                         </button>
                       </div>
                     </td>
+                    <td id="two">
+                      <div className="ower" title={channelInfo.username}>
+                        {channelInfo.username}
+                      </div>
+                    </td>
+                    <td id="tree"></td>
                   </tr>
                 </tbody>
               </table>
@@ -140,5 +141,4 @@ const ChannelList = (props) => {
     </div>
   );
 };
-
 export default ChannelList;
