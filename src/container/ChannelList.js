@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./style/ChannelList.css";
 import { LAST_API_URL } from "../setup";
 import { useNavigate } from "react-router-dom";
-import setCookie from "./components/setCookie";
 import removeCookie from "./components/rmCookie";
 import ErrorBox from "./components/ErrorBox";
 
@@ -64,8 +63,8 @@ const ChannelList = (props) => {
   }, []);
   if (!data) return <div></div>;
   return (
-    <div className="body-channellist">
-      <div className="list-chennel">
+    <div className="Body-Channel-List">
+      <div className="List-Channel">
         <h1>WebChat</h1>
         <h2>Nazwa kanału powinna mieć nie mniej niż 5 znaków</h2>
         <h2>Na kanale nie może być mniej niż 2 os</h2>
@@ -75,7 +74,7 @@ const ChannelList = (props) => {
             value={channel}
             autoComplete="off"
             name="Channel_name"
-            className="channels-inputs"
+            className="Channels-Inputs"
             placeholder="Podaj nazwe kanału"
             onChange={(e) => setChannel(e.target.value)}
           ></input>
@@ -113,24 +112,18 @@ const ChannelList = (props) => {
                   </tr>
                   <tr>
                     <td id="one">
-                      <div class="chanelname">{data.channelName}</div>
+                      <div class="Chanelname">{data.channelName}</div>
                     </td>
                     <td id="two">
-                      <div class="ower" title={data.username}>
+                      <div class="Owner" title={data.username}>
                         {data.username}
                       </div>
                     </td>
                     <td id="tree">
-                      <div class="ower" title={data.maxUsers}>
-                        {data.maxNumberOfMembers}
-                      </div>
-                    </td>
-                    <td id="four">
-                      <div class="jonbutton">
+                      <div class="Jonbutton">
                         <button
-                          class="jon"
+                          class="Jon"
                           onClick={(e) => {
-                            setCookie("channel", e.target.innerText);
                             props.setChannel(e.target.innerText);
                             navigate("/chat");
                           }}

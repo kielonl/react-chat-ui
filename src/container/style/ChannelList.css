@@ -1,4 +1,4 @@
-.body-channellist {
+.Body-Channel-List {
   background-color: #292524;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-family: "Edu QLD Beginner", cursive;
@@ -7,7 +7,7 @@
   text-align: center;
   padding: 2px;
 }
-.list-chennel {
+.List-Channel {
   flex-direction: column;
   word-break: break-all;
   align-items: center;
@@ -20,7 +20,7 @@
   background-color: #292524;
   color: yellow;
 }
-.channels-inputs {
+.Channels-Inputs {
   background-color: #18181b;
   color: #a3e635;
   font-size: medium;
@@ -43,13 +43,13 @@
 #tree {
   width: 30%;
 }
-.chanelname {
+.Chanelname {
   color: green;
 }
-.ower {
+.Owner {
   color: red;
 }
-.jon {
+.Join {
   background-color: #d4d4d8;
   border-radius: 50px 10px;
   color: #27272a;
