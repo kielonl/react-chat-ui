@@ -13,7 +13,6 @@ const Users = (props) => {
     console.log(users);
   };
   socket.on("userList", updateList);
-  // socket.on("bye", deleteUser);
   return (
     <div>
       Channel users list:
@@ -21,10 +20,6 @@ const Users = (props) => {
         return <p className="menu-item">{person.username}</p>;
       })}
     </div>
-
-    //   <p className="menu-item">{person}</p>
-    // ));
-    // return <p>{userss}</p>;
   );
 };
 export default Users;
