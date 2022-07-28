@@ -1,17 +1,14 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { SOCKET_URL } from "../../setup";
 import io from "socket.io-client";
-import getCookie from "./getCookie";
 
 const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
-const room = getCookie("channel");
-const Users = () => {
+const Users = (props) => {
   const [users, setUsers] = useState([]);
 
   const updateList = (userList) => {
-    const newRoom = getCookie("channel");
+    const newRoom = props.channel;
     setUsers(userList.filter((user) => user.channel === newRoom));
     console.log(users);
   };

@@ -7,28 +7,25 @@ import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
-import getCookie from "./components/getCookie";
-
-import removeCookie from "./components/rmCookie";
 import { SOCKET_URL } from "../setup";
+
 const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
   const navigate = useNavigate();
 
-  if (props.user === "{}" || !props.user) {
-    removeCookie("user");
+  if (!props.user) {
+    // rmLS("user");
     navigate("/");
   }
-  if (getCookie("channel") === "{}") {
-    removeCookie("channel");
+  if (!props.channel) {
+    // rmLS("channel");
     navigate("/home");
   }
-  const room = getCookie("channel");
-  const user = JSON.parse(getCookie("user")).username;
 
-  console.log("cookie room " + room);
+  const room = props.channel;
+  const user = props.user;
 
   const [receivedMessage, setReceivedMessage] = useState([]);
   const [message, setMessage] = useState("");
@@ -90,7 +87,6 @@ const ChatPage = (props) => {
       setReceivedMessage(messages.current);
     };
     const leaveEvent = (name) => {
-      
       messages.current = [
         ...messages.current,
         {
@@ -113,7 +109,7 @@ const ChatPage = (props) => {
       socket.off("bye", leaveEvent);
       socket.off("chat message", event);
     };
-  }, []);
+  });
   const listItems = receivedMessage.map((msgContainer, i) => {
     if (msgContainer.message.type === "img") {
       return (
@@ -142,7 +138,7 @@ const ChatPage = (props) => {
     <div className="body">
       <SideBtn />
       <div className="left-bar">
-        <SideBar />
+        <SideBar user={props.channel} />
       </div>
       <div className="right-bar">
         <Navbar itemListElement="h1" channelInfo={room} />
@@ -171,7 +167,7 @@ const ChatPage = (props) => {
               onChange={sendFile}
               accept="image/*"
             />
-            <label for="files" className="SendFile">
+            <label htmlFor="files" className="SendFile">
               📸
             </label>
             <button type="submit" onClick={sendMessage} className="send">
