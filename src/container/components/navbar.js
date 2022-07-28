@@ -1,13 +1,10 @@
 import React from "react";
 import "../style/navbar.css";
-import { useNavigate } from "react-router-dom";
+import { logout } from "./logout";
 
 const Navbar = (props) => {
-  const navigate = useNavigate();
   const handleLogout = () => {
-    // rmLS("user");
-    navigate("/");
-    return;
+    logout();
   };
   console.log(props);
 

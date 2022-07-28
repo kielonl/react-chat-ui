@@ -5,6 +5,7 @@ import axios from "axios";
 
 import { LAST_API_URL } from "../setup";
 import ErrorBox from "./components/ErrorBox";
+import { logout } from "./components/logout";
 
 const CHANNELS_ENDPOINT = LAST_API_URL + "/channels";
 
@@ -17,9 +18,9 @@ const ChannelList = (props) => {
   const navigate = useNavigate();
 
   if (props.user === "{}" || !props.user) {
-    // rmLS("user");
-    navigate("/");
+    logout();
   }
+
   const handleSubmit = async (e) => {
     if (!maxUsers || !channelName) {
       alert("Popraw error");
@@ -45,6 +46,7 @@ const ChannelList = (props) => {
         });
       });
   };
+
   const pullData = async (e) => {
     const channelArray = [];
     const channelsGET = await axios.get(CHANNELS_ENDPOINT);

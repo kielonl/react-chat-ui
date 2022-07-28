@@ -23,8 +23,6 @@ const Login = (props) => {
         imageUrl: image || imageUrl,
       })
       .then(function (response) {
-        // rmLS("user");
-        console.log(response.data);
         props.setUser(response.data);
         navigate("/home");
         setErrorMessage({

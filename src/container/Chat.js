@@ -6,22 +6,17 @@ import Message from "./components/message";
 import Photo from "./components/photo";
 import SideBtn from "./components/SideBarBtn";
 import io from "socket.io-client";
-import { useNavigate } from "react-router-dom";
 import { SOCKET_URL } from "../setup";
+import { logout } from "./components/logout";
 
 const ENDPOINT = SOCKET_URL;
 let socket = io(ENDPOINT);
 
 const ChatPage = (props) => {
-  const navigate = useNavigate();
-
-  if (!props.user) {
-    // rmLS("user");
-    navigate("/");
-  }
-  if (!props.channel) {
-    // rmLS("channel");
-    navigate("/home");
+  if (Object.keys(props.user).length === 0) {
+    console.log("dupa");
+    console.log({ ...props });
+    logout();
   }
 
   const room = props.channel;

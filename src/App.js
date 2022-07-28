@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import * as storageManager from "./container/components/storageManager";
 
 function App() {
-  const [user, setUser] = useState({});
-  const [channel, setChannel] = useState({});
+  const [user, setUser] = useState(null);
+  const [channel, setChannel] = useState(null);
 
   useEffect(() => {
     setUser(storageManager.read("user"));
@@ -17,16 +17,16 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(channel);
-    if (Object.keys(user).length !== 0) {
+    if (user && Object.keys(user).length !== 0) {
       storageManager.save("user", user);
     }
-    if (Object.keys(channel).length !== 0) {
+    if (channel && Object.keys(channel).length !== 0) {
       storageManager.save("channel", channel);
     }
   }, [user, channel]);
-  console.log(channel);
+  console.log(user, channel);
 
+  if (!user || !channel) return <div></div>;
   return (
     <Router>
       <Routes>
